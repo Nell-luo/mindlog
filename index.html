@@ -681,6 +681,11 @@ textarea.lined { background:#fff repeating-linear-gradient(transparent,transpare
 .season-pin-list li { display:flex; gap:6px; font-size:13px; color:var(--text); line-height:1.7; padding:2px 0; }
 .season-pin-list .pin-no { flex-shrink:0; width:16px; height:16px; border-radius:50%; background:var(--primary-lighter); color:var(--primary-dark); font-size:10px; display:flex; align-items:center; justify-content:center; margin-top:3px; }
 .season-pin-list .pin-empty { color:var(--text-light); }
+.season-pin-list .pin-text { flex:1; }
+.pin-check { -webkit-appearance:none; appearance:none; width:16px; height:16px; box-sizing:border-box; flex-shrink:0; margin:4px 0 0 auto; border:1.5px solid var(--border); border-radius:5px; background:#fff; position:relative; cursor:pointer; }
+.pin-check:checked { background:var(--primary); border-color:var(--primary); }
+.pin-check:checked::after { content:''; position:absolute; left:50%; top:50%; width:4px; height:8px; border:solid #fff; border-width:0 2px 2px 0; transform:translate(-50%,-50%) rotate(45deg); }
+.season-pin-list li.done .pin-text { color:var(--text-light); text-decoration:line-through; }
 .season-action-theme { font-family:'Songti SC','STSong',serif; font-size:20px; font-weight:700; color:var(--accent); letter-spacing:2px; }
 .season-action-quarter { font-size:11px; color:var(--text-light); margin:2px 0 6px; }
 .season-action-list { margin:0; padding-left:18px; }
@@ -3960,6 +3965,18 @@ function updateSeasonActionCard(year, quarter){
   const btn = document.getElementById('pinSeasonCard');
   btn.textContent = pinned ? '✅ 已固定到首页（点击取消）' : '📌 设为季度内首页固定显示';
 }
+function readPinChecks(key, id){
+  try { const all = JSON.parse(localStorage.getItem(key)||'{}'); return all[id]||[]; } catch(e){ return []; }
+}
+function writePinCheck(key, id, idx, val){
+  try {
+    const all = JSON.parse(localStorage.getItem(key)||'{}');
+    const arr = all[id]||[];
+    arr[idx] = val;
+    all[id] = arr;
+    localStorage.setItem(key, JSON.stringify(all));
+  } catch(e){}
+}
 function renderSeasonPin(){
   const card = document.getElementById('seasonPinCard');
   if (!card) return;
@@ -3971,8 +3988,10 @@ function renderSeasonPin(){
   document.getElementById('seasonPinLabel').textContent = `${pin.year}年 Q${pin.quarter+1} 季度关键词`;
   document.getElementById('seasonPinTheme').textContent = pin.theme || '（未填写关键词）';
   const items = splitActionLines(pin.action);
+  const checkId = `${pin.year}-Q${pin.quarter+1}`;
+  const checks = readPinChecks('seasonPinChecks', checkId);
   document.getElementById('seasonPinActions').innerHTML = items.length
-    ? items.map((t,i)=>`<li><span class="pin-no">${i+1}</span><span>${escapeHtml(t)}</span></li>`).join('')
+    ? items.map((t,i)=>`<li class="${checks[i]?'done':''}"><span class="pin-no">${i+1}</span><span class="pin-text">${escapeHtml(t)}</span><input type="checkbox" class="pin-check"${checks[i]?' checked':''}></li>`).join('')
     : '<li class="pin-empty">（未填写 3 件大事）</li>';
   card.style.display = '';
 }
@@ -4032,8 +4051,9 @@ function renderWeekPin(){
   document.getElementById('weekPinLabel').textContent = `本周关键词 · ${weekTargetLabel(targetStart)}`;
   document.getElementById('weekPinTheme').textContent = pin.theme || '（未填写关键词）';
   const items = splitActionLines(pin.action);
+  const checks = readPinChecks('weekPinChecks', pin.weekStart);
   document.getElementById('weekPinActions').innerHTML = items.length
-    ? items.map((t,i)=>`<li><span class="pin-no">${i+1}</span><span>${escapeHtml(t)}</span></li>`).join('')
+    ? items.map((t,i)=>`<li class="${checks[i]?'done':''}"><span class="pin-no">${i+1}</span><span class="pin-text">${escapeHtml(t)}</span><input type="checkbox" class="pin-check"${checks[i]?' checked':''}></li>`).join('')
     : '<li class="pin-empty">（未填写 3 件大事）</li>';
   card.style.display = '';
 }
@@ -5462,6 +5482,21 @@ document.addEventListener('DOMContentLoaded', ()=>{
       });
     });
   })();
+  // 首页关键词卡 3 件大事：勾选完成（文字变灰划线），按周期记忆
+  [['seasonPinActions','seasonPinChecks'],['weekPinActions','weekPinChecks']].forEach(([ulId, storeKey])=>{
+    const ul = document.getElementById(ulId);
+    if (!ul) return;
+    ul.addEventListener('change', (ev)=>{
+      const cb = ev.target.closest('.pin-check');
+      if (!cb) return;
+      const idx = [...ul.querySelectorAll('.pin-check')].indexOf(cb);
+      cb.closest('li').classList.toggle('done', cb.checked);
+      const pin = storeKey==='seasonPinChecks' ? seasonPinData() : weekPinData();
+      if (!pin) return;
+      const id = storeKey==='seasonPinChecks' ? `${pin.year}-Q${pin.quarter+1}` : pin.weekStart;
+      writePinCheck(storeKey, id, idx, cb.checked);
+    });
+  });
   document.getElementById('syncMonthAction').addEventListener('click', syncMonthAction);
   // 复盘标签
   document.getElementById('refTags').addEventListener('click',(e)=>{
