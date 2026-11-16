@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html lang="zh-CN"><head>
-<title>心迹</title>
+<title>Mindlog</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-<!-- ============ PWA 桌面添加配置（必须将本HTML文件下载到手机本地，用Safari/Chrome直接打开本地文件或部署到独立网址后"添加到主屏幕"，图标和名称才会正确显示为"心迹"。如果在百度文心助手的iframe预览中打开，会继承宿主页面标题和图标，这是浏览器的安全限制，不是文件本身问题） ============ -->
+<!-- ============ PWA 桌面添加配置（必须将本HTML文件下载到手机本地，用Safari/Chrome直接打开本地文件或部署到独立网址后"添加到主屏幕"，图标和名称才会正确显示为"Mindlog"。如果在百度文心助手的iframe预览中打开，会继承宿主页面标题和图标，这是浏览器的安全限制，不是文件本身问题） ============ -->
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="apple-mobile-web-app-title" content="心迹">
+<meta name="apple-mobile-web-app-title" content="Mindlog">
 <meta name="mobile-web-app-capable" content="yes">
-<meta name="application-name" content="心迹">
+<meta name="application-name" content="Mindlog">
 <meta name="theme-color" content="#f5f8f9">
 <meta name="msapplication-TileColor" content="#f7c26a">
 <link rel="apple-touch-icon" sizes="180x180" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAAC6UlEQVR4nO3bPU5UURiA4cHYuwhKY802tIZdUFlAQQ27oLd3BVJbuwh3YEFiIfMSGO7PmevzlDCZc5Pz5hwy83Fyfnu1g33erf0AjEscJHGQxEESB0kcJHGQxEESB0kcJHGQxEESB0kcJHGQxEESB0kcJHGQ3k/4Xl9Pvz//go+ff0y43H/u4u567iWcHMfq/vLm/vJm1iXEcdxmTUQcWzBTH+LYiDn6EMd2TN6HOEji2JRpD48pP+dgEr8fvvzzkw9n31Z5EnGM4mkTT3/1kkruL2+m+nzMtTKEZ8o44GVTEcf6XrXlS/YhjpUdsNmL9SGONR28zcv0IY7VvHGDF+hDHCRxkMSxjkkuhblvFnGQxEESB0kcJHGQxLGOSb6Fn/urfHGQxEESx2reeCksMB4mjjUdvMHLDA6KY2UHbPNiI6XiWN+rNnvJYWNxDOGFW77wGLrp81H83Xj/mkBaK4WnXCskcZCGu1Yefv1c+xFGdHb6aflFnRwkcZCGu1ZWOT/Zy8lBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkIYb9jFDupcZUsYiDtJw14oZ0nE4OUjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA7ScMM+Zkj3MkPKWMRBGu5aMUM6DicHSRwkcZDEQRIHSRwkcZDEQRIHSRwkcZDEQRIHSRwkcZDEQRpu2McM6V5mSBmLOEjDXStmSMfh5CCJgyQOkjhI4iCJgyQOkjhI4iCJgyQOkjhI4iCJgyQOkjhIww37mCHdywwpYxEHabhrxQzpOJwcJHGQxEESB0kcJHGQxEESB0kcJHGQxEESB0kcJHFszcXd9VRvJQ6SODZlwmNjJw6eIY7tmPbY2IljMyYvYyeObZijjN2AA8a8ykxZPBLHsZo1i0cn57dXc6/BkfI3B0kcJHGQxEESB0kcJHGQxEESB0kcJHGQxEESB0kcJHGQxEESB0kcpD+GE2SCxvfckQAAAABJRU5ErkJggg==">
 <link rel="apple-touch-icon-precomposed" sizes="180x180" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAAC6UlEQVR4nO3bPU5UURiA4cHYuwhKY802tIZdUFlAQQ27oLd3BVJbuwh3YEFiIfMSGO7PmevzlDCZc5Pz5hwy83Fyfnu1g33erf0AjEscJHGQxEESB0kcJHGQxEESB0kcJHGQxEESB0kcJHGQxEESB0kcJHGQ3k/4Xl9Pvz//go+ff0y43H/u4u567iWcHMfq/vLm/vJm1iXEcdxmTUQcWzBTH+LYiDn6EMd2TN6HOEji2JRpD48pP+dgEr8fvvzzkw9n31Z5EnGM4mkTT3/1kkruL2+m+nzMtTKEZ8o44GVTEcf6XrXlS/YhjpUdsNmL9SGONR28zcv0IY7VvHGDF+hDHCRxkMSxjkkuhblvFnGQxEESB0kcJHGQxLGOSb6Fn/urfHGQxEESx2reeCksMB4mjjUdvMHLDA6KY2UHbPNiI6XiWN+rNnvJYWNxDOGFW77wGLrp81H83Xj/mkBaK4WnXCskcZCGu1Yefv1c+xFGdHb6aflFnRwkcZCGu1ZWOT/Zy8lBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkIYb9jFDupcZUsYiDtJw14oZ0nE4OUjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA7ScMM+Zkj3MkPKWMRBGu5aMUM6DicHSRwkcZDEQRIHSRwkcZDEQRIHSRwkcZDEQRIHSRwkcZDEQRpu2McM6V5mSBmLOEjDXStmSMfh5CCJgyQOkjhI4iCJgyQOkjhI4iCJgyQOkjhI4iCJgyQOkjhIww37mCHdywwpYxEHabhrxQzpOJwcJHGQxEESB0kcJHGQxEESB0kcJHGQxEESB0kcJHFszcXd9VRvJQ6SODZlwmNjJw6eIY7tmPbY2IljMyYvYyeObZijjN2AA8a8ykxZPBLHsZo1i0cn57dXc6/BkfI3B0kcJHGQxEESB0kcJHGQxEESB0kcJHGQxEESB0kcJHGQxEESB0kcpD+GE2SCxvfckQAAAABJRU5ErkJggg==">
 <link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAAC6UlEQVR4nO3bPU5UURiA4cHYuwhKY802tIZdUFlAQQ27oLd3BVJbuwh3YEFiIfMSGO7PmevzlDCZc5Pz5hwy83Fyfnu1g33erf0AjEscJHGQxEESB0kcJHGQxEESB0kcJHGQxEESB0kcJHGQxEESB0kcJHGQ3k/4Xl9Pvz//go+ff0y43H/u4u567iWcHMfq/vLm/vJm1iXEcdxmTUQcWzBTH+LYiDn6EMd2TN6HOEji2JRpD48pP+dgEr8fvvzzkw9n31Z5EnGM4mkTT3/1kkruL2+m+nzMtTKEZ8o44GVTEcf6XrXlS/YhjpUdsNmL9SGONR28zcv0IY7VvHGDF+hDHCRxkMSxjkkuhblvFnGQxEESB0kcJHGQxLGOSb6Fn/urfHGQxEESx2reeCksMB4mjjUdvMHLDA6KY2UHbPNiI6XiWN+rNnvJYWNxDOGFW77wGLrp81H83Xj/mkBaK4WnXCskcZCGu1Yefv1c+xFGdHb6aflFnRwkcZCGu1ZWOT/Zy8lBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkIYb9jFDupcZUsYiDtJw14oZ0nE4OUjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA7ScMM+Zkj3MkPKWMRBGu5aMUM6DicHSRwkcZDEQRIHSRwkcZDEQRIHSRwkcZDEQRIHSRwkcZDEQRpu2McM6V5mSBmLOEjDXStmSMfh5CCJgyQOkjhI4iCJgyQOkjhI4iCJgyQOkjhI4iCJgyQOkjhIww37mCHdywwpYxEHabhrxQzpOJwcJHGQxEESB0kcJHGQxEESB0kcJHGQxEESB0kcJHFszcXd9VRvJQ6SODZlwmNjJw6eIY7tmPbY2IljMyYvYyeObZijjN2AA8a8ykxZPBLHsZo1i0cn57dXc6/BkfI3B0kcJHGQxEESB0kcJHGQxEESB0kcJHGQxEESB0kcJHGQxEESB0kcpD+GE2SCxvfckQAAAABJRU5ErkJggg==" type="image/png" sizes="180x180">
 <link rel="shortcut icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAAC6UlEQVR4nO3bPU5UURiA4cHYuwhKY802tIZdUFlAQQ27oLd3BVJbuwh3YEFiIfMSGO7PmevzlDCZc5Pz5hwy83Fyfnu1g33erf0AjEscJHGQxEESB0kcJHGQxEESB0kcJHGQxEESB0kcJHGQxEESB0kcJHGQ3k/4Xl9Pvz//go+ff0y43H/u4u567iWcHMfq/vLm/vJm1iXEcdxmTUQcWzBTH+LYiDn6EMd2TN6HOEji2JRpD48pP+dgEr8fvvzzkw9n31Z5EnGM4mkTT3/1kkruL2+m+nzMtTKEZ8o44GVTEcf6XrXlS/YhjpUdsNmL9SGONR28zcv0IY7VvHGDF+hDHCRxkMSxjkkuhblvFnGQxEESB0kcJHGQxLGOSb6Fn/urfHGQxEESx2reeCksMB4mjjUdvMHLDA6KY2UHbPNiI6XiWN+rNnvJYWNxDOGFW77wGLrp81H83Xj/mkBaK4WnXCskcZCGu1Yefv1c+xFGdHb6aflFnRwkcZCGu1ZWOT/Zy8lBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkMRBEgdJHCRxkIYb9jFDupcZUsYiDtJw14oZ0nE4OUjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA7ScMM+Zkj3MkPKWMRBGu5aMUM6DicHSRwkcZDEQRIHSRwkcZDEQRIHSRwkcZDEQRIHSRwkcZDEQRpu2McM6V5mSBmLOEjDXStmSMfh5CCJgyQOkjhI4iCJgyQOkjhI4iCJgyQOkjhI4iCJgyQOkjhIww37mCHdywwpYxEHabhrxQzpOJwcJHGQxEESB0kcJHGQxEESB0kcJHGQxEESB0kcJHFszcXd9VRvJQ6SODZlwmNjJw6eIY7tmPbY2IljMyYvYyeObZijjN2AA8a8ykxZPBLHsZo1i0cn57dXc6/BkfI3B0kcJHGQxEESB0kcJHGQxEESB0kcJHGQxEESB0kcJHGQxEESB0kcpD+GE2SCxvfckQAAAABJRU5ErkJggg==" type="image/png">
-<link rel="manifest" href="data:application/manifest+json;base64,eyJuYW1lIjogIuW/g+i/uSIsICJzaG9ydF9uYW1lIjogIuW/g+i/uSIsICJkZXNjcmlwdGlvbiI6ICLmr4/ml6Xml6XorrDmnKwiLCAic3RhcnRfdXJsIjogIi4iLCAiZGlzcGxheSI6ICJzdGFuZGFsb25lIiwgImJhY2tncm91bmRfY29sb3IiOiAiI2Y1ZjBlOCIsICJ0aGVtZV9jb2xvciI6ICIjNWI4YzdkIiwgImljb25zIjogW3sic3JjIjogImRhdGE6aW1hZ2UvcG5nO2Jhc2U2NCxpVkJPUncwS0dnb0FBQUFOU1VoRVVnQUFBTFFBQUFDMENBSUFBQUN5cjVGbEFBQUM2VWxFUVZSNG5PM2JQVTVVVVJpQTRjSFl1d2hLWTgwMnRJWmRVRmxBUVEyN29MZDNCVkpidXdoM1lFRmlJZk1TR083UG1ldnpsRENaYzVQejVod3k4M0Z5Zm51MWczM2VyZjBBakVzY0pIR1F4RUVTQjBrY0pIR1F4RUVTQjBrY0pIR1F4RUVTQjBrY0pIR1F4RUVTQjBrY0pIR1Ezay80WGw5UHZ6Ly9nbytmZjB5NDNIL3U0dTU2N2lXY0hNZnEvdkxtL3ZKbTFpWEVjZHhtVFVRY1d6QlRIK0xZaURuNkVNZDJUTjZIT0VqaTJKUnBENDhwUCtkZ0VyOGZ2dnp6a3c5bjMxWjVFbkdNNG1rVFQzLzFra3J1TDIrbStuek10VEtFWjhvNDRHVlRFY2Y2WHJYbFMvWWhqcFVkc05tTDlTR09OUjI4emN2MElZN1Z2SEdERitoREhDUnhrTVN4amtrdWhibHZGbkdReEVFU0Iwa2NKSEdReExHT1NiNkZuL3VyZkhHUXhFRVN4MnJlZUNrc01CNG1qalVkdk1ITERBNktZMlVIYlBOaUk2WGlXTityTm52SllXTnhET0dGVzc3d0dMcnA4MUg4M1hqL21rQmFLNFduWENza2NaQ0d1MVllZnYxYyt4RkdkSGI2YWZsRm5Sd2tjWkNHdTFaV09UL1p5OGxCRWdkSkhDUnhrTVJCRWdkSkhDUnhrTVJCRWdkSkhDUnhrTVJCRWdkSkhDUnhrSVliOWpGRHVwY1pVc1lpRHRKdzE0b1owbkU0T1VqaUlJbURKQTZTT0VqaUlJbURKQTZTT0VqaUlJbURKQTZTT0VqaUlJbURKQTdTY01NK1prajNNa1BLV01SQkd1NWFNVU02RGljSFNSd2tjWkRFUVJJSFNSd2tjWkRFUVJJSFNSd2tjWkRFUVJJSFNSd2tjWkRFUVJwdTJNY002VjVtU0JtTE9FakRYU3RtU01maDVDQ0pneVFPa2poSTRpQ0pneVFPa2poSTRpQ0pneVFPa2poSTRpQ0pneVFPa2poSXd3MzdtQ0hkeXd3cFl4RUhhYmhyeFF6cE9Kd2NKSEdReEVFU0Iwa2NKSEdReEVFU0Iwa2NKSEdReEVFU0Iwa2NKSEZzemNYZDlWUnZKUTZTT0RabHdtTmpKdzZlSVk3dG1QYlkySWxqTXlZdll5ZU9iWmlqak4yQUE4YTh5a3haUEJMSHNabzFpMGNuNTdkWGM2L0JrZkkzQjBrY0pIR1F4RUVTQjBrY0pIR1F4RUVTQjBrY0pIR1F4RUVTQjBrY0pIR1F4RUVTQjBrY3BEK0dFMlNDeHZmY2tRQUFBQUJKUlU1RXJrSmdnZz09IiwgInNpemVzIjogIjE4MHgxODAiLCAidHlwZSI6ICJpbWFnZS9wbmcifSwgeyJzcmMiOiAiZGF0YTppbWFnZS9wbmc7YmFzZTY0LGlWQk9SdzBLR2dvQUFBQU5TVWhFVWdBQUFMUUFBQUMwQ0FJQUFBQ3lyNUZsQUFBQzZVbEVRVlI0bk8zYlBVNVVVUmlBNGNIWXV3aEtZODAydElaZFVGbEFRUTI3b0xkM0JWSmJ1d2gzWUVGaUlmTVNHTzdQbWV2emxEQ1pjNVB6NWh3eTgzRnlmbnUxZzMzZXJmMEFqRXNjSkhHUXhFRVNCMGtjSkhHUXhFRVNCMGtjSkhHUXhFRVNCMGtjSkhHUXhFRVNCMGtjSkhHUTNrLzRYbDlQdnovL2dvK2ZmMHk0M0gvdTR1NTY3aVdjSE1mcS92TG0vdkptMWlYRWNkeG1UVVFjV3pCVEgrTFlpRG42RU1kMlRONkhPRWppMkpScEQ0OHBQK2RnRXI4ZnZ2enprdzluMzFaNUVuR000bWtUVDMvMWtrcnVMMittK256TXRUS0VaOG80NEdWVEVjZjZYclhsUy9ZaGpwVWRzTm1MOVNHT05SMjh6Y3YwSVk3VnZIR0RGK2hESENSeGtNU3hqa2t1aGJsdkZuR1F4RUVTQjBrY0pIR1F4TEdPU2I2Rm4vdXJmSEdReEVFU3gycmVlQ2tzTUI0bWpqVWR2TUhMREE2S1kyVUhiUE5pSTZYaVdOK3JObnZKWVdOeERPR0ZXNzd3R0xycDgxSDgzWGovbWtCYUs0V25YQ3NrY1pDR3UxWWVmdjFjK3hGR2RIYjZhZmxGblJ3a2NaQ0d1MVpXT1QvWnk4bEJFZ2RKSENSeGtNUkJFZ2RKSENSeGtNUkJFZ2RKSENSeGtNUkJFZ2RKSENSeGtJWWI5akZEdXBjWlVzWWlEdEp3MTRvWjBuRTRPVWppSUltREpBNlNPRWppSUltREpBNlNPRWppSUltREpBNlNPRWppSUltREpBN1NjTU0rWmtqM01rUEtXTVJCR3U1YU1VTTZEaWNIU1J3a2NaREVRUklIU1J3a2NaREVRUklIU1J3a2NaREVRUklIU1J3a2NaREVRUnB1Mk1jTTZWNW1TQm1MT0VqRFhTdG1TTWZoNUNDSmd5UU9ramhJNGlDSmd5UU9ramhJNGlDSmd5UU9ramhJNGlDSmd5UU9ramhJd3czN21DSGR5d3dwWXhFSGFiaHJ4UXpwT0p3Y0pIR1F4RUVTQjBrY0pIR1F4RUVTQjBrY0pIR1F4RUVTQjBrY0pIRnN6Y1hkOVZSdkpRNlNPRFpsd21Oakp3NmVJWTd0bVBiWTJJbGpNeVl2WXllT2JaaWpqTjJBQThhOHlreFpQQkxIc1pvMWkwY241N2RYYzYvQmtmSTNCMGtjSkhHUXhFRVNCMGtjSkhHUXhFRVNCMGtjSkhHUXhFRVNCMGtjSkhHUXhFRVNCMGtjcEQrR0UyU0N4dmZja1FBQUFBQkpSVTVFcmtKZ2dnPT0iLCAic2l6ZXMiOiAiMTkyeDE5MiIsICJ0eXBlIjogImltYWdlL3BuZyJ9LCB7InNyYyI6ICJkYXRhOmltYWdlL3BuZztiYXNlNjQsaVZCT1J3MEtHZ29BQUFBTlNVaEVVZ0FBQUxRQUFBQzBDQUlBQUFDeXI1RmxBQUFDNlVsRVFWUjRuTzNiUFU1VVVSaUE0Y0hZdXdoS1k4MDJ0SVpkVUZsQVFRMjdvTGQzQlZKYnV3aDNZRUZpSWZNU0dPN1BtZXZ6bERDWmM1UHo1aHd5ODNGeWZudTFnMzNlcmYwQWpFc2NKSEdReEVFU0Iwa2NKSEdReEVFU0Iwa2NKSEdReEVFU0Iwa2NKSEdReEVFU0Iwa2NKSEdRM2svNFhsOVB2ei8vZ28rZmYweTQzSC91NHU1NjdpV2NITWZxL3ZMbS92Sm0xaVhFY2R4bVRVUWNXekJUSCtMWWlEbjZFTWQyVE42SE9FamkySlJwRDQ4cFArZGdFcjhmdnZ6emt3OW4zMVo1RW5HTTRta1RUMy8xa2tydUwyK20rbnpNdFRLRVo4bzQ0R1ZURWNmNlhyWGxTL1loanBVZHNObUw5U0dPTlIyOHpjdjBJWTdWdkhHREYraERIQ1J4a01TeGpra3VoYmx2Rm5HUXhFRVNCMGtjSkhHUXhMR09TYjZGbi91cmZIR1F4RUVTeDJyZWVDa3NNQjRtampVZHZNSExEQTZLWTJVSGJQTmlJNlhpV04rck5udkpZV054RE9HRlc3N3dHTHJwODFIODNYai9ta0JhSzRXblhDc2tjWkNHdTFZZWZ2MWMreEZHZEhiNmFmbEZuUndrY1pDR3UxWldPVC9aeThsQkVnZEpIQ1J4a01SQkVnZEpIQ1J4a01SQkVnZEpIQ1J4a01SQkVnZEpIQ1J4a0lZYjlqRkR1cGNaVXNZaUR0SncxNG9aMG5FNE9VamlJSW1ESkE2U09FamlJSW1ESkE2U09FamlJSW1ESkE2U09FamlJSW1ESkE3U2NNTStaa2ozTWtQS1dNUkJHdTVhTVVNNkRpY0hTUndrY1pERVFSSUhTUndrY1pERVFSSUhTUndrY1pERVFSSUhTUndrY1pERVFScHUyTWNNNlY1bVNCbUxPRWpEWFN0bVNNZmg1Q0NKZ3lRT2tqaEk0aUNKZ3lRT2tqaEk0aUNKZ3lRT2tqaEk0aUNKZ3lRT2tqaEl3dzM3bUNIZHl3d3BZeEVIYWJocnhRenBPSndjSkhHUXhFRVNCMGtjSkhHUXhFRVNCMGtjSkhHUXhFRVNCMGtjSkhGc3pjWGQ5VlJ2SlE2U09EWmx3bU5qSnc2ZUlZN3RtUGJZMklsak15WXZZeWVPYlppampOMkFBOGE4eWt4WlBCTEhzWm8xaTBjbjU3ZFhjNi9Ca2ZJM0Iwa2NKSEdReEVFU0Iwa2NKSEdReEVFU0Iwa2NKSEdReEVFU0Iwa2NKSEdReEVFU0Iwa2NwRCtHRTJTQ3h2ZmNrUUFBQUFCSlJVNUVya0pnZ2c9PSIsICJzaXplcyI6ICI1MTJ4NTEyIiwgInR5cGUiOiAiaW1hZ2UvcG5nIn1dfQ==">
+<link rel="manifest" href="data:application/manifest+json;base64,eyJuYW1lIjoiTWluZGxvZyIsInNob3J0X25hbWUiOiJNaW5kbG9nIiwiZGVzY3JpcHRpb24iOiLmr4/ml6Xml6XorrDmnKwiLCJzdGFydF91cmwiOiIuIiwiZGlzcGxheSI6InN0YW5kYWxvbmUiLCJiYWNrZ3JvdW5kX2NvbG9yIjoiI2Y1ZjBlOCIsInRoZW1lX2NvbG9yIjoiIzViOGM3ZCIsImljb25zIjpbeyJzcmMiOiJkYXRhOmltYWdlL3BuZztiYXNlNjQsaVZCT1J3MEtHZ29BQUFBTlNVaEVVZ0FBQUxRQUFBQzBDQUlBQUFDeXI1RmxBQUFDNlVsRVFWUjRuTzNiUFU1VVVSaUE0Y0hZdXdoS1k4MDJ0SVpkVUZsQVFRMjdvTGQzQlZKYnV3aDNZRUZpSWZNU0dPN1BtZXZ6bERDWmM1UHo1aHd5ODNGeWZudTFnMzNlcmYwQWpFc2NKSEdReEVFU0Iwa2NKSEdReEVFU0Iwa2NKSEdReEVFU0Iwa2NKSEdReEVFU0Iwa2NKSEdRM2svNFhsOVB2ei8vZ28rZmYweTQzSC91NHU1NjdpV2NITWZxL3ZMbS92Sm0xaVhFY2R4bVRVUWNXekJUSCtMWWlEbjZFTWQyVE42SE9FamkySlJwRDQ4cFArZGdFcjhmdnZ6emt3OW4zMVo1RW5HTTRta1RUMy8xa2tydUwyK20rbnpNdFRLRVo4bzQ0R1ZURWNmNlhyWGxTL1loanBVZHNObUw5U0dPTlIyOHpjdjBJWTdWdkhHREYraERIQ1J4a01TeGpra3VoYmx2Rm5HUXhFRVNCMGtjSkhHUXhMR09TYjZGbi91cmZIR1F4RUVTeDJyZWVDa3NNQjRtampVZHZNSExEQTZLWTJVSGJQTmlJNlhpV04rck5udkpZV054RE9HRlc3N3dHTHJwODFIODNYai9ta0JhSzRXblhDc2tjWkNHdTFZZWZ2MWMreEZHZEhiNmFmbEZuUndrY1pDR3UxWldPVC9aeThsQkVnZEpIQ1J4a01SQkVnZEpIQ1J4a01SQkVnZEpIQ1J4a01SQkVnZEpIQ1J4a0lZYjlqRkR1cGNaVXNZaUR0SncxNG9aMG5FNE9VamlJSW1ESkE2U09FamlJSW1ESkE2U09FamlJSW1ESkE2U09FamlJSW1ESkE3U2NNTStaa2ozTWtQS1dNUkJHdTVhTVVNNkRpY0hTUndrY1pERVFSSUhTUndrY1pERVFSSUhTUndrY1pERVFSSUhTUndrY1pERVFScHUyTWNNNlY1bVNCbUxPRWpEWFN0bVNNZmg1Q0NKZ3lRT2tqaEk0aUNKZ3lRT2tqaEk0aUNKZ3lRT2tqaEk0aUNKZ3lRT2tqaEl3dzM3bUNIZHl3d3BZeEVIYWJocnhRenBPSndjSkhHUXhFRVNCMGtjSkhHUXhFRVNCMGtjSkhHUXhFRVNCMGtjSkhGc3pjWGQ5VlJ2SlE2U09EWmx3bU5qSnc2ZUlZN3RtUGJZMklsak15WXZZeWVPYlppampOMkFBOGE4eWt4WlBCTEhzWm8xaTBjbjU3ZFhjNi9Ca2ZJM0Iwa2NKSEdReEVFU0Iwa2NKSEdReEVFU0Iwa2NKSEdReEVFU0Iwa2NKSEdReEVFU0Iwa2NwRCtHRTJTQ3h2ZmNrUUFBQUFCSlJVNUVya0pnZ2c9PSIsInNpemVzIjoiMTgweDE4MCIsInR5cGUiOiJpbWFnZS9wbmcifSx7InNyYyI6ImRhdGE6aW1hZ2UvcG5nO2Jhc2U2NCxpVkJPUncwS0dnb0FBQUFOU1VoRVVnQUFBTFFBQUFDMENBSUFBQUN5cjVGbEFBQUM2VWxFUVZSNG5PM2JQVTVVVVJpQTRjSFl1d2hLWTgwMnRJWmRVRmxBUVEyN29MZDNCVkpidXdoM1lFRmlJZk1TR083UG1ldnpsRENaYzVQejVod3k4M0Z5Zm51MWczM2VyZjBBakVzY0pIR1F4RUVTQjBrY0pIR1F4RUVTQjBrY0pIR1F4RUVTQjBrY0pIR1F4RUVTQjBrY0pIR1Ezay80WGw5UHZ6Ly9nbytmZjB5NDNIL3U0dTU2N2lXY0hNZnEvdkxtL3ZKbTFpWEVjZHhtVFVRY1d6QlRIK0xZaURuNkVNZDJUTjZIT0VqaTJKUnBENDhwUCtkZ0VyOGZ2dnp6a3c5bjMxWjVFbkdNNG1rVFQzLzFra3J1TDIrbStuek10VEtFWjhvNDRHVlRFY2Y2WHJYbFMvWWhqcFVkc05tTDlTR09OUjI4emN2MElZN1Z2SEdERitoREhDUnhrTVN4amtrdWhibHZGbkdReEVFU0Iwa2NKSEdReExHT1NiNkZuL3VyZkhHUXhFRVN4MnJlZUNrc01CNG1qalVkdk1ITERBNktZMlVIYlBOaUk2WGlXTityTm52SllXTnhET0dGVzc3d0dMcnA4MUg4M1hqL21rQmFLNFduWENza2NaQ0d1MVllZnYxYyt4RkdkSGI2YWZsRm5Sd2tjWkNHdTFaV09UL1p5OGxCRWdkSkhDUnhrTVJCRWdkSkhDUnhrTVJCRWdkSkhDUnhrTVJCRWdkSkhDUnhrSVliOWpGRHVwY1pVc1lpRHRKdzE0b1owbkU0T1VqaUlJbURKQTZTT0VqaUlJbURKQTZTT0VqaUlJbURKQTZTT0VqaUlJbURKQTdTY01NK1prajNNa1BLV01SQkd1NWFNVU02RGljSFNSd2tjWkRFUVJJSFNSd2tjWkRFUVJJSFNSd2tjWkRFUVJJSFNSd2tjWkRFUVJwdTJNY002VjVtU0JtTE9FakRYU3RtU01maDVDQ0pneVFPa2poSTRpQ0pneVFPa2poSTRpQ0pneVFPa2poSTRpQ0pneVFPa2poSXd3MzdtQ0hkeXd3cFl4RUhhYmhyeFF6cE9Kd2NKSEdReEVFU0Iwa2NKSEdReEVFU0Iwa2NKSEdReEVFU0Iwa2NKSEZzemNYZDlWUnZKUTZTT0RabHdtTmpKdzZlSVk3dG1QYlkySWxqTXlZdll5ZU9iWmlqak4yQUE4YTh5a3haUEJMSHNabzFpMGNuNTdkWGM2L0JrZkkzQjBrY0pIR1F4RUVTQjBrY0pIR1F4RUVTQjBrY0pIR1F4RUVTQjBrY0pIR1F4RUVTQjBrY3BEK0dFMlNDeHZmY2tRQUFBQUJKUlU1RXJrSmdnZz09Iiwic2l6ZXMiOiIxOTJ4MTkyIiwidHlwZSI6ImltYWdlL3BuZyJ9LHsic3JjIjoiZGF0YTppbWFnZS9wbmc7YmFzZTY0LGlWQk9SdzBLR2dvQUFBQU5TVWhFVWdBQUFMUUFBQUMwQ0FJQUFBQ3lyNUZsQUFBQzZVbEVRVlI0bk8zYlBVNVVVUmlBNGNIWXV3aEtZODAydElaZFVGbEFRUTI3b0xkM0JWSmJ1d2gzWUVGaUlmTVNHTzdQbWV2emxEQ1pjNVB6NWh3eTgzRnlmbnUxZzMzZXJmMEFqRXNjSkhHUXhFRVNCMGtjSkhHUXhFRVNCMGtjSkhHUXhFRVNCMGtjSkhHUXhFRVNCMGtjSkhHUTNrLzRYbDlQdnovL2dvK2ZmMHk0M0gvdTR1NTY3aVdjSE1mcS92TG0vdkptMWlYRWNkeG1UVVFjV3pCVEgrTFlpRG42RU1kMlRONkhPRWppMkpScEQ0OHBQK2RnRXI4ZnZ2enprdzluMzFaNUVuR000bWtUVDMvMWtrcnVMMittK256TXRUS0VaOG80NEdWVEVjZjZYclhsUy9ZaGpwVWRzTm1MOVNHT05SMjh6Y3YwSVk3VnZIR0RGK2hESENSeGtNU3hqa2t1aGJsdkZuR1F4RUVTQjBrY0pIR1F4TEdPU2I2Rm4vdXJmSEdReEVFU3gycmVlQ2tzTUI0bWpqVWR2TUhMREE2S1kyVUhiUE5pSTZYaVdOK3JObnZKWVdOeERPR0ZXNzd3R0xycDgxSDgzWGovbWtCYUs0V25YQ3NrY1pDR3UxWWVmdjFjK3hGR2RIYjZhZmxGblJ3a2NaQ0d1MVpXT1QvWnk4bEJFZ2RKSENSeGtNUkJFZ2RKSENSeGtNUkJFZ2RKSENSeGtNUkJFZ2RKSENSeGtJWWI5akZEdXBjWlVzWWlEdEp3MTRvWjBuRTRPVWppSUltREpBNlNPRWppSUltREpBNlNPRWppSUltREpBNlNPRWppSUltREpBN1NjTU0rWmtqM01rUEtXTVJCR3U1YU1VTTZEaWNIU1J3a2NaREVRUklIU1J3a2NaREVRUklIU1J3a2NaREVRUklIU1J3a2NaREVRUnB1Mk1jTTZWNW1TQm1MT0VqRFhTdG1TTWZoNUNDSmd5UU9ramhJNGlDSmd5UU9ramhJNGlDSmd5UU9ramhJNGlDSmd5UU9ramhJd3czN21DSGR5d3dwWXhFSGFiaHJ4UXpwT0p3Y0pIR1F4RUVTQjBrY0pIR1F4RUVTQjBrY0pIR1F4RUVTQjBrY0pIRnN6Y1hkOVZSdkpRNlNPRFpsd21Oakp3NmVJWTd0bVBiWTJJbGpNeVl2WXllT2JaaWpqTjJBQThhOHlreFpQQkxIc1pvMWkwY241N2RYYzYvQmtmSTNCMGtjSkhHUXhFRVNCMGtjSkhHUXhFRVNCMGtjSkhHUXhFRVNCMGtjSkhHUXhFRVNCMGtjcEQrR0UyU0N4dmZja1FBQUFBQkpSVTVFcmtKZ2dnPT0iLCJzaXplcyI6IjUxMng1MTIiLCJ0eXBlIjoiaW1hZ2UvcG5nIn1dfQ==">
 
 <style>
 
@@ -91,7 +91,7 @@ body {
 
 .app-container { max-width:480px;margin:0 auto;padding:16px;position:relative; }
 .app-header { text-align:center;padding:16px 0 14px; }
-.app-header h1 { font-size:28px;font-weight:700;color:var(--ink);letter-spacing:6px;font-family:'Songti SC','STSong','SimSun',serif; }
+.app-header h1 { font-size:28px;font-weight:700;color:var(--ink);letter-spacing:4px;font-family:-apple-system,'Helvetica Neue',Helvetica,Arial,'PingFang SC',sans-serif; }
 .app-header p { font-size:13px;color:var(--text-secondary);margin-top:4px;letter-spacing:2px;font-style:italic; }
 
 .card { background:var(--bg-card);border-radius:14px;padding:18px;margin-bottom:14px;
@@ -192,7 +192,12 @@ body {
 .time-section.collapsed { box-shadow:var(--shadow-sm); }
 .time-section.morning .time-section-header { background:linear-gradient(135deg,#ffedc0 0%,#ffd98a 55%,#ffc64d 100%);color:#8a5a10; }
 .time-section.evening .time-section-header { background:linear-gradient(135deg,#e0ebf7 0%,#bdd1e8 50%,#8fb0d6 100%);color:#2c4a73; }
-.time-section.growth-section .time-section-header { background:linear-gradient(135deg,#e5f2e9 0%,#b9d9c5 50%,#82b197 100%);color:#315e49; }
+.time-section.growth-section { padding:18px; }
+.time-section.growth-section .time-section-header { background:none;color:var(--primary-dark);padding:0 0 14px;border-bottom:none;gap:8px; }
+.time-section.growth-section .time-section-header .icon { color:var(--primary);font-size:18px; }
+.time-section.growth-section .time-section-title { font-size:16px;font-weight:600;letter-spacing:1px;font-family:'Songti SC','STSong','SimSun',serif; }
+.time-section.growth-section .time-section-body { padding:0;background:var(--bg-card); }
+.growth-title-line { flex:1;height:1px;border-top:1px dashed var(--border);margin-left:8px; }
 .time-section-icon { font-size:24px;line-height:1; }
 .time-section-title { font-size:17px;font-weight:700;color:inherit;font-family:'Songti SC','STSong','SimSun',serif;letter-spacing:2px; }
 .time-section-sub { font-size:12px;color:rgba(138,90,16,0.75);margin-top:2px;letter-spacing:1px; }
@@ -837,7 +842,7 @@ textarea.lined { background:#fff repeating-linear-gradient(transparent,transpare
 
 <div class="app-container">
   <div class="app-header">
-    <h1>心迹</h1>
+    <h1>Mindlog</h1>
     <p>记录每一天的成长与思考</p>
   </div>
 
@@ -877,8 +882,12 @@ textarea.lined { background:#fff repeating-linear-gradient(transparent,transpare
       <ul class="season-pin-list" id="seasonPinActions"></ul>
     </div>
     <style>
-    .daily-quote{margin-bottom:14px;padding:14px 18px;background:linear-gradient(135deg,#ffedc0 0%,#ffd98a 55%,#ffc64d 100%);border-radius:12px;border:none;position:relative;box-shadow:0 2px 10px rgba(232,163,61,0.18);}
-    .daily-quote-text{font-family:'Songti SC','STSong','SimSun',serif;font-size:15px;line-height:1.9;color:#5a3a10;letter-spacing:1px;padding:0;text-indent:0;white-space:normal;word-break:break-word;overflow:visible;text-overflow:clip;display:block;}
+    .daily-quote{margin:18px 0 18px;padding:24px 24px 26px;background:linear-gradient(160deg,#fffdf7 0%,#fbf3e2 100%);border:1px solid #ecdfc4;border-radius:6px 6px 12px 12px;box-shadow:0 8px 22px rgba(176,143,88,0.16),inset 0 1px 0 #fff;position:relative;}
+    .daily-quote::before{content:'';position:absolute;top:-1px;left:50%;transform:translateX(-50%);width:46px;height:14px;background:linear-gradient(135deg,var(--primary),var(--primary-dark));border-radius:0 0 6px 6px;box-shadow:0 2px 6px rgba(62,107,95,0.25);}
+    .daily-quote::after{content:'';position:absolute;left:50%;bottom:-1px;transform:translateX(-50%);width:0;height:0;border-left:13px solid transparent;border-right:13px solid transparent;border-bottom:12px solid var(--bg);}
+    .daily-quote-text{font-family:'Songti SC','STSong','SimSun',serif;font-size:15px;line-height:2;color:#6b4a1e;letter-spacing:1.5px;padding:0 10px;text-align:center;position:relative;white-space:normal;word-break:break-word;overflow:visible;}
+    .daily-quote-text::before{content:'“';position:absolute;left:-4px;top:-12px;font-family:Georgia,'Times New Roman',serif;font-size:30px;line-height:1;color:rgba(184,146,84,0.35);}
+    .daily-quote-text::after{content:'”';position:absolute;right:-4px;bottom:-14px;font-family:Georgia,'Times New Roman',serif;font-size:30px;line-height:1;color:rgba(184,146,84,0.35);}
     </style>
 
     <!-- ========== 晨间日记 ========== -->
@@ -1093,10 +1102,11 @@ textarea.lined { background:#fff repeating-linear-gradient(transparent,transpare
     </div>
 
     <!-- 成长记录 -->
-    <div class="time-section evening growth-section">
+    <div class="time-section growth-section">
       <div class="time-section-header">
-        <span class="time-section-icon"><svg class="icon"><use href="#i-leaf"></use></svg></span>
-        <div class="time-section-title">成长记录</div>
+        <svg class="icon"><use href="#i-leaf"></use></svg>
+        <span class="time-section-title">成长记录</span>
+        <span class="growth-title-line"></span>
       </div>
       <div class="time-section-body">
       <div class="record-tabs">
@@ -2626,7 +2636,7 @@ function exportData(){
   const blob = new Blob([data],{type:'application/json'});
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a'); a.href=url;
-  a.download=`心迹日记本_备份_${dateKey(today())}.json`;
+  a.download=`Mindlog日记本_备份_${dateKey(today())}.json`;
   a.click(); URL.revokeObjectURL(url);
   showToast('📦 备份文件已下载');
 }
@@ -2725,7 +2735,7 @@ function exportMarkdown(keys, label){
   const moodName = {happy:'开心',calm:'平静',tired:'疲惫',sad:'难过',excited:'兴奋'};
   const wName = {sunny:'晴',cloudy:'多云',overcast:'阴',rainy:'雨',snowy:'雪'};
   const weekdays=['周日','周一','周二','周三','周四','周五','周六'];
-  let md = `# 心迹日记本导出${label?'（'+label+'）':''}\n\n> 导出时间：${new Date().toLocaleString('zh-CN')}\n\n---\n\n`;
+  let md = `# Mindlog日记本导出${label?'（'+label+'）':''}\n\n> 导出时间：${new Date().toLocaleString('zh-CN')}\n\n---\n\n`;
   keys.forEach(k=>{
     const e=entries[k];
     const d=parseKey(k);
@@ -2802,7 +2812,7 @@ function exportMarkdown(keys, label){
 
     md += '---\n\n';
   });
-  const fn = `心迹日记本_${(label||dateKey(today())).replace(/[\\/:*?"<>|\s]+/g,'_')}.md`;
+  const fn = `Mindlog日记本_${(label||dateKey(today())).replace(/[\\/:*?"<>|\s]+/g,'_')}.md`;
   openMdDialog(`日记导出${label?' · '+label:''}`, fn, md);
 }
 // 文件内 Markdown 预览弹窗（替代浏览器原生下载/对话框）
@@ -3638,6 +3648,7 @@ function renderWeekReview(){
     h.forEach((v,i)=>{ if(v) totals[i]++; });
   });
   const colors=['#e8a33d','#7ca5c9','#d98076','#7cb39b'];
+  // 所有习惯均以每周 7 次为达标目标
   document.getElementById('weekHabitProgress').innerHTML = habitNames.map((name,i)=>{
     const cnt=totals[i], pct=Math.round(cnt/7*100);
     const status = pct>=70?'✅':pct>=40?'⚠️':'❌';
@@ -4645,7 +4656,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
     }
   });
   document.getElementById('mdExportDownload').addEventListener('click', ()=>{
-    downloadMd(mdDialogFile || `心迹导出_${dateKey(today())}.md`, mdDialogContent);
+    downloadMd(mdDialogFile || `Mindlog导出_${dateKey(today())}.md`, mdDialogContent);
     closeMdDialog();
   });
   // 各类「导出md」按钮（捕获阶段拦截，避免触发卡片折叠）
