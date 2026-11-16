@@ -4012,7 +4012,7 @@ function updateWeekActionCard(weekStart){
   const dk = dateKey(weekStart);
   card.style.display = 'block';
   document.getElementById('weekActionTheme').textContent = theme || '（未填写关键词）';
-  document.getElementById('weekActionWeek').textContent = `固定显示于 ${weekTargetLabel(dk)} 所在周的首页`;
+  document.getElementById('weekActionWeek').textContent = `固定显示于 ${weekTargetLabel(dateKey(addDays(new Date(dk+'T00:00:00'), 7)))} 所在周的首页`;
   const items = splitActionLines(action);
   document.getElementById('weekActionList').innerHTML = items.length
     ? items.map(t=>`<li>${escapeHtml(t)}</li>`).join('')
@@ -4027,8 +4027,9 @@ function renderWeekPin(){
   if (!card) return;
   const pin = weekPinData();
   if (!pin){ card.style.display = 'none'; return; }
-  if (pin.weekStart !== dateKey(getMonday(currentDate || today()))){ card.style.display = 'none'; return; }
-  document.getElementById('weekPinLabel').textContent = `本周关键词 · ${weekTargetLabel(pin.weekStart)}`;
+  const targetStart = dateKey(addDays(new Date(pin.weekStart+'T00:00:00'), 7));
+  if (targetStart !== dateKey(getMonday(currentDate || today()))){ card.style.display = 'none'; return; }
+  document.getElementById('weekPinLabel').textContent = `本周关键词 · ${weekTargetLabel(targetStart)}`;
   document.getElementById('weekPinTheme').textContent = pin.theme || '（未填写关键词）';
   const items = splitActionLines(pin.action);
   document.getElementById('weekPinActions').innerHTML = items.length
@@ -4047,7 +4048,7 @@ function toggleWeekPin(){
   } else {
     const data = JSON.parse(localStorage.getItem(weekReflectionKey(weekStart))||'{}');
     localStorage.setItem('weekPin', JSON.stringify({weekStart:dk, theme:data.refTheme||'', action:data.refWeekAction||''}));
-    showToast('📌 已固定到首页（本周）');
+    showToast('📌 已固定到下周首页');
   }
   updateWeekActionCard(weekStart);
   renderWeekPin();
