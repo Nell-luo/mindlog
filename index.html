@@ -267,8 +267,9 @@ textarea.lined { background:#fff repeating-linear-gradient(transparent,transpare
 .record-panel.active { display:block; }
 .record-field { margin-bottom:12px; }
 .record-field label { display:block;font-size:13px;color:var(--text-secondary);margin-bottom:6px; }
-.record-field input,.record-field select { width:100%;padding:10px 12px;border:1px solid var(--border);border-radius:10px;background:#fff;font-size:16px;font-family:inherit;color:var(--ink);outline:none; }
-.record-field input:focus,.record-field select:focus { border-color:var(--primary); }
+.record-field input,.record-field select,.record-field textarea { width:100%;padding:10px 12px;border:1px solid var(--border);border-radius:10px;background:#fff;font-size:16px;font-family:inherit;color:var(--ink);outline:none; }
+.record-field input:focus,.record-field select:focus,.record-field textarea:focus { border-color:var(--primary); }
+.record-field textarea { min-height:64px;line-height:1.6;resize:vertical;display:block; }
 .record-row { display:grid;grid-template-columns:1fr 1fr;gap:10px; }
 .tag-list { display:flex;flex-wrap:wrap;gap:6px;margin-top:6px; }
 .tag { padding:4px 12px;border-radius:16px;font-size:12px;background:var(--bg-input);color:var(--text-secondary);cursor:pointer;border:1px solid var(--border);font-family:inherit; }
@@ -276,8 +277,8 @@ textarea.lined { background:#fff repeating-linear-gradient(transparent,transpare
 .record-list { margin-top:12px; }
 .record-entry { display:flex;justify-content:space-between;align-items:flex-start;padding:10px 8px;background:transparent;border-radius:0;margin-bottom:6px;font-size:13px;border-left:3px solid var(--primary-light);border-bottom:1px dashed var(--border-light); }
 .record-entry-info { flex:1; }
-.record-entry-title { font-weight:500;color:var(--text);margin-bottom:2px; }
-.record-entry-meta { font-size:11px;color:var(--text-light); }
+.record-entry-title { font-weight:500;color:var(--text);margin-bottom:2px;white-space:pre-wrap;word-break:break-word; }
+.record-entry-meta { font-size:11px;color:var(--text-light);white-space:pre-wrap;word-break:break-word; }
 .record-entry-del { background:none;border:none;color:var(--text-light);cursor:pointer;font-size:16px;padding:0 4px;display:flex;align-items:center; }
 .record-entry-del:hover { color:var(--danger); }
 .record-entry-edit { background:none;border:none;color:var(--text-light);cursor:pointer;font-size:14px;padding:0 4px;display:flex;align-items:center; }
@@ -295,7 +296,7 @@ textarea.lined { background:#fff repeating-linear-gradient(transparent,transpare
 .rs-group { margin-bottom:10px; }
 .rs-group:last-child { margin-bottom:0; }
 .rs-group-title { font-size:12px;color:var(--text-secondary);font-weight:600;margin-bottom:4px; }
-.rs-item { font-size:13px;color:var(--text);line-height:1.7;padding:4px 0 4px 10px;border-left:2px solid var(--primary-light);margin-bottom:2px;cursor:pointer; }
+.rs-item { font-size:13px;color:var(--text);line-height:1.7;padding:4px 0 4px 10px;border-left:2px solid var(--primary-light);margin-bottom:2px;cursor:pointer;white-space:pre-wrap;word-break:break-word; }
 .rs-item:hover { background:var(--primary-lighter);border-left-color:var(--primary); }
 .rs-empty { font-size:12px;color:var(--text-light);padding:6px 0; }
 
@@ -492,6 +493,32 @@ textarea.lined { background:#fff repeating-linear-gradient(transparent,transpare
 
 /* 象限项排序按钮 */
 .quad-move { font-size:10px;color:var(--text-light); }
+
+/* ============ 时间管理页：周计划 / 四象限 Tab ============ */
+.time-tabs { display:flex; gap:2px; background:#f3f6f8; padding:4px; border-radius:12px; margin-bottom:12px; border:1px solid var(--border); }
+.time-tab { flex:1; padding:9px 4px; text-align:center; font-size:13px; border-radius:9px; cursor:pointer; color:var(--text-secondary); border:none; background:transparent; font-family:inherit; }
+.time-tab.active { background:var(--paper); color:var(--primary-dark); font-weight:600; box-shadow:0 2px 6px rgba(91,140,125,.15); }
+.week-plan-grid { grid-template-columns:1fr; }
+.wp-card { min-height:0; }
+.wp-date { font-size:11px; font-weight:500; color:var(--text-light); font-family:Arial,sans-serif; margin-left:4px; }
+.wp-card.wp-today { border:2px solid var(--primary); box-shadow:0 0 0 3px rgba(91,140,125,.18), 0 2px 10px rgba(91,140,125,.12); }
+.wp-card.wp-today .quad-title { color:var(--primary-dark); }
+.wp-card.wp-past { border:2px solid #b9c4cc; }
+.wp-card.wp-past .quad-title { color:var(--text-secondary); }
+.wp-item { background:transparent; border-left:none; border-radius:0; border-bottom:1px dashed var(--border-light); padding:8px 2px; }
+.wp-item:last-child { border-bottom:none; }
+.wp-item:hover { background:transparent; }
+.wp-main { flex:1; min-width:0; }
+.wp-text { word-break:break-word; }
+.wp-note { font-size:11px; color:var(--text-light); margin-top:2px; line-height:1.5; white-space:pre-wrap; word-break:break-word; }
+.wp-item .quad-item-actions { opacity:1; }
+.wp-item .quad-item-actions button { font-size:15px; padding:0 4px; }
+.wp-no { flex-shrink:0; width:16px; height:16px; border-radius:50%; font-size:10px; font-weight:700; display:flex; align-items:center; justify-content:center; margin-top:3px; background:var(--primary-lighter); color:var(--primary-dark); }
+.wp-no.n1 { background:#f2c98a; color:#8a5a12; }
+.wp-no.n2 { background:#b9d8cc; color:#376857; }
+.wp-no.n3 { background:#c9d6e4; color:#4a6485; }
+.wp-item .pin-check { margin-top:4px; }
+.wp-item.done .wp-text { color:var(--text-light); text-decoration:line-through; }
 
 /* ============ 思维导图 ============ */
 .mindmap-modal { position:fixed;inset:0;z-index:3000;display:none;flex-direction:column;background:var(--bg); }
@@ -1191,7 +1218,7 @@ textarea.lined { background:#fff repeating-linear-gradient(transparent,transpare
         </div>
         <div class="record-field">
           <label>笔记</label>
-          <input type="text" id="studyNote" placeholder="简要记录">
+          <textarea id="studyNote" rows="2" placeholder="简要记录"></textarea>
         </div>
         <div class="record-row">
           <div class="record-field">
@@ -1219,7 +1246,7 @@ textarea.lined { background:#fff repeating-linear-gradient(transparent,transpare
       <div class="record-panel" data-panel="growth">
         <div class="record-field">
           <label>成长记录</label>
-          <input type="text" id="growthContent" placeholder="今天的小成就或新发现...">
+          <textarea id="growthContent" rows="2" placeholder="今天的小成就或新发现..."></textarea>
         </div>
         <div class="record-field">
           <label>快速标签</label>
@@ -1280,7 +1307,19 @@ textarea.lined { background:#fff repeating-linear-gradient(transparent,transpare
       </div>
     </div>
 
+    <!-- 周计划 / 四象限 Tab -->
+    <div class="time-tabs" id="timeTabs">
+      <button type="button" class="time-tab active" data-ttab="plan">🗓 周计划</button>
+      <button type="button" class="time-tab" data-ttab="quad">🧭 四象限</button>
+    </div>
+
+    <!-- 周计划 -->
+    <div class="time-panel" data-tpanel="plan" id="timePlanPanel">
+      <div class="quad-grid week-plan-grid" id="weekPlanGrid"></div>
+    </div>
+
     <!-- 四象限 -->
+    <div class="time-panel" data-tpanel="quad" style="display:none;">
     <div class="quad-grid">
       <div class="quad-card q-q1">
         <div class="quad-head">
@@ -1333,6 +1372,7 @@ textarea.lined { background:#fff repeating-linear-gradient(transparent,transpare
       <div class="card-title"><svg class="icon"><use href="#i-inbox"></use></svg>未分配<span class="section-sub-label" style="font-weight:400;font-size:12px;color:var(--text-light);">稍后分配</span></div>
       <div class="quad-list" data-quad="unassigned"></div>
       <button class="quad-add" data-quad="unassigned">+ 添加待办</button>
+    </div>
     </div>
   </div>
 
@@ -1626,6 +1666,7 @@ textarea.lined { background:#fff repeating-linear-gradient(transparent,transpare
   <div class="prompt-box">
     <div class="prompt-title" id="promptTitle">请输入</div>
     <input type="text" class="prompt-input" id="promptInput" autocomplete="off">
+    <input type="text" class="prompt-input" id="promptInput2" autocomplete="off" style="display:none;margin-top:8px;">
     <textarea class="prompt-input prompt-textarea" id="promptTextarea" rows="4" style="display:none"></textarea>
     <div class="prompt-hint" id="promptHint" style="display:none">按回车换行</div>
     <div class="prompt-actions">
@@ -1865,6 +1906,13 @@ let timeDate = today();
 let timeWeekStart = getMonday(timeDate);
 let timeCalMonth = today();
 let _timeLoaded = false;
+
+// 周计划待办：{ '周一的日期': { todo:[], mon:[], tue:[], wed:[], thu:[], fri:[], sat:[], sun:[] } }
+let weekPlanTodos = {};
+try {
+  const _wp = JSON.parse(localStorage.getItem('weekPlanTodos') || 'null');
+  if (_wp && typeof _wp === 'object') weekPlanTodos = _wp;
+} catch(e){}
 
 // 思维导图
 let mindmapData = null; // {nodes:[{id,text,x,y,parent}], selectedId}
@@ -2353,6 +2401,7 @@ function loadTimeDate(target){
   timeWeekStart = getMonday(d);
   renderTimeWeek();
   renderQuadLists();
+  renderWeekPlan();
 }
 
 function renderQuadLists(){
@@ -2389,6 +2438,101 @@ function renderQuadLists(){
 }
 
 function escapeHtml(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+// ============ 周计划 ============
+const WEEK_PLAN_COLS = [
+  {k:'todo', name:'To do'},
+  {k:'mon', name:'Mon'},
+  {k:'tue', name:'Tue'},
+  {k:'wed', name:'Wed'},
+  {k:'thu', name:'Thu'},
+  {k:'fri', name:'Fri'},
+  {k:'sat', name:'Sat'},
+  {k:'sun', name:'Sun'}
+];
+function weekPlanBucket(){
+  const k = dateKey(timeWeekStart);
+  if (!weekPlanTodos[k] || typeof weekPlanTodos[k] !== 'object') weekPlanTodos[k] = {};
+  return weekPlanTodos[k];
+}
+function saveWeekPlanTodos(){
+  try { localStorage.setItem('weekPlanTodos', JSON.stringify(weekPlanTodos)); } catch(e){}
+}
+function renderWeekPlan(){
+  const grid = document.getElementById('weekPlanGrid');
+  if (!grid) return;
+  const bucket = weekPlanBucket();
+  let fold = {};
+  try { fold = JSON.parse(localStorage.getItem('weekPlanFoldState')||'{}') || {}; } catch(e){ fold = {}; }
+  const todayD = today();
+  grid.innerHTML = WEEK_PLAN_COLS.map((c,i)=>{
+    const items = bucket[c.k] || [];
+    let dateLabel = '', sub = '', cls = 'quad-card wp-card';
+    if (c.k === 'todo'){
+      sub = items.length ? items.length + ' 项' : '暂无';
+    } else {
+      const d = addDays(timeWeekStart, i-1);
+      dateLabel = `<span class="wp-date num">${d.getMonth()+1}.${d.getDate()}</span>`;
+      sub = items.length ? items.length + ' 项' : '暂无';
+      if (sameDay(d, todayD)) cls += ' wp-today';
+      else if (d.getTime() < todayD.getTime()) cls += ' wp-past';
+    }
+    if (fold[c.k]) cls += ' collapsed';
+    const listHtml = items.length
+      ? items.map((t,j)=>`<div class="quad-item wp-item${t.done?' done':''}" data-wp="${c.k}" data-idx="${j}">
+          <span class="wp-no n${j+1}">${j+1}</span>
+          <div class="wp-main">
+            <div class="wp-text">${escapeHtml(t.text)}</div>
+            ${t.note?'<div class="wp-note">'+escapeHtml(t.note)+'</div>':''}
+          </div>
+          <input type="checkbox" class="pin-check wp-check" title="完成"${t.done?' checked':''}>
+          <div class="quad-item-actions">
+            <button class="wp-edit" title="编辑">✎</button>
+            <button class="wp-del" title="删除">×</button>
+          </div>
+        </div>`).join('')
+      : '<div class="quad-empty">暂无</div>';
+    return `<div class="${cls}" data-wp="${c.k}">
+      <div class="quad-head">
+        <div class="quad-title">${c.name}${dateLabel}</div>
+        <div class="quad-head-right"><div class="quad-sub">${sub}</div><span class="quad-fold">▾</span></div>
+      </div>
+      <div class="quad-body">
+        <div class="quad-list" data-wp="${c.k}">${listHtml}</div>
+        <button class="quad-add" data-wp-add="${c.k}">+ 添加</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+async function weekPlanAdd(col){
+  const res = await showPrompt({title:'添加待办', placeholder:'输入待办内容', second:true, placeholder2:'补充说明，不需要可留空'});
+  if (!res) return;
+  const text = (res.value||'').trim();
+  if (!text) return;
+  const b = weekPlanBucket();
+  b[col] = b[col] || [];
+  b[col].push({id:'w'+Date.now(), text:text, note:(res.value2||'').trim(), done:false});
+  saveWeekPlanTodos();
+  renderWeekPlan();
+}
+async function weekPlanEdit(col, idx){
+  const b = weekPlanBucket();
+  const item = (b[col]||[])[idx];
+  if (!item) return;
+  const res = await showPrompt({title:'修改待办', value:item.text, second:true, value2:item.note||'', placeholder:'输入待办内容', placeholder2:'补充说明，不需要可留空'});
+  if (!res) return;
+  item.text = (res.value||'').trim() || item.text;
+  item.note = (res.value2||'').trim();
+  saveWeekPlanTodos();
+  renderWeekPlan();
+}
+function weekPlanDel(col, idx){
+  const b = weekPlanBucket();
+  if (!b[col]) return;
+  b[col].splice(idx,1);
+  saveWeekPlanTodos();
+  renderWeekPlan();
+}
 
 // 在四象限中直接添加的待办 → 固定事项，每天都在该象限显示
 async function quadAddTodo(q){
@@ -2675,7 +2819,8 @@ function exportData(){
     _savedMindmaps: savedMindmaps,
     _reflections: reflections,
     _seasonPin: seasonPin,
-    _weekPin: weekPin
+    _weekPin: weekPin,
+    _weekPlan: weekPlanTodos
   }),null,2);
   const blob = new Blob([data],{type:'application/json'});
   const url = URL.createObjectURL(blob);
@@ -3106,6 +3251,12 @@ function importData(file){
         try { localStorage.setItem('weekPin', JSON.stringify(data._weekPin)); } catch(e){}
         if (typeof renderWeekPin === 'function') renderWeekPin();
       }
+      // 恢复周计划待办
+      if (data._weekPlan && typeof data._weekPlan === 'object'){
+        weekPlanTodos = data._weekPlan;
+        saveWeekPlanTodos();
+        if (typeof renderWeekPlan === 'function') renderWeekPlan();
+      }
       loadEntry();
       showToast(`✅ 导入成功：${cnt}条记录${merged?'('+merged+'条合并)':''}`);
     }catch(err){
@@ -3259,16 +3410,22 @@ function mmCloseConfirm(ok){
   if (ok && cb) cb();
 }
 // 通用输入对话框（替代浏览器原生 prompt，返回 Promise：确定=字符串，取消=null）
+// opts.second=true 时显示第二个输入框，确定返回 {value, value2}
 let promptResolve = null;
+let promptHasSecond = false;
 function showPrompt(opts){
   opts = typeof opts==='string' ? {title:opts} : (opts||{});
   const modal = document.getElementById('promptModal');
   const input = document.getElementById('promptInput');
+  const input2 = document.getElementById('promptInput2');
   const ta = document.getElementById('promptTextarea');
   const hint = document.getElementById('promptHint');
   const multi = !!opts.multiline;
+  const hasSecond = !multi && !!opts.second;
+  promptHasSecond = hasSecond;
   document.getElementById('promptTitle').textContent = opts.title || '请输入';
   input.style.display = multi ? 'none' : '';
+  input2.style.display = hasSecond ? '' : 'none';
   ta.style.display = multi ? '' : 'none';
   hint.style.display = multi ? '' : 'none';
   ta.rows = opts.rows || 4;
@@ -3276,6 +3433,10 @@ function showPrompt(opts){
   ta.value = opts.value!=null ? opts.value : '';
   input.placeholder = opts.placeholder || '';
   ta.placeholder = opts.placeholder || '';
+  if (hasSecond){
+    input2.value = opts.value2!=null ? opts.value2 : '';
+    input2.placeholder = opts.placeholder2 || '';
+  }
   modal.classList.add('show');
   const el = multi ? ta : input;
   setTimeout(()=>{ el.focus(); if (!multi) el.select(); }, 30);
@@ -3286,11 +3447,15 @@ function closePrompt(ok){
   if (!modal || !modal.classList.contains('show')) return;
   const ta = document.getElementById('promptTextarea');
   const input = document.getElementById('promptInput');
+  const input2 = document.getElementById('promptInput2');
   const val = (ta.style.display!=='none') ? ta.value : input.value;
+  const val2 = input2.value;
+  const second = promptHasSecond;
+  promptHasSecond = false;
   modal.classList.remove('show');
   const cb = promptResolve;
   promptResolve = null;
-  if (cb) cb(ok ? val : null);
+  if (cb) cb(ok ? (second ? {value:val, value2:val2} : val) : null);
 }
 function resizeMindmap(){
   const rect = mmCanvas.parentElement.getBoundingClientRect();
@@ -4810,6 +4975,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
         timeWeekStart = getMonday(timeDate);
         renderTimeWeek();
         renderQuadLists();
+        renderWeekPlan();
         window._timeLoaded = true;
       }
       if(page==='pageReview' && !window._reviewLoaded){
@@ -4932,12 +5098,12 @@ document.addEventListener('DOMContentLoaded', ()=>{
   document.getElementById('timePrevWeek').addEventListener('click',()=>{
     timeDate = addDays(timeDate,-7);
     timeWeekStart = getMonday(timeDate);
-    renderTimeWeek(); renderQuadLists();
+    renderTimeWeek(); renderQuadLists(); renderWeekPlan();
   });
   document.getElementById('timeNextWeek').addEventListener('click',()=>{
     timeDate = addDays(timeDate,7);
     timeWeekStart = getMonday(timeDate);
-    renderTimeWeek(); renderQuadLists();
+    renderTimeWeek(); renderQuadLists(); renderWeekPlan();
   });
   document.getElementById('timeWeekRow').addEventListener('click',(e)=>{
     const day = e.target.closest('.week-day[data-date]');
@@ -4967,12 +5133,20 @@ document.addEventListener('DOMContentLoaded', ()=>{
   document.querySelectorAll('.quad-add').forEach(btn=>{
     btn.addEventListener('click',()=>{ quadAddTodo(btn.dataset.quad); });
   });
-  // 象限卡片独立折叠（折叠状态记忆到 localStorage）
+  // 象限 / 周计划卡片独立折叠（折叠状态记忆到 localStorage）
   document.addEventListener('click',(e)=>{
     const head = e.target.closest('.quad-card .quad-head');
     if(!head) return;
     const card = head.closest('.quad-card');
     card.classList.toggle('collapsed');
+    const wp = card.dataset.wp;
+    if (wp){
+      let wmap = {};
+      try { wmap = JSON.parse(localStorage.getItem('weekPlanFoldState') || '{}'); } catch(err){ wmap = {}; }
+      wmap[wp] = card.classList.contains('collapsed');
+      localStorage.setItem('weekPlanFoldState', JSON.stringify(wmap));
+      return;
+    }
     const list = card.querySelector('.quad-list');
     const q = list && list.dataset.quad;
     if (q){
@@ -4999,6 +5173,38 @@ document.addEventListener('DOMContentLoaded', ()=>{
     if(up){ const item=up.closest('.quad-item'); quadMoveTodo(item.dataset.quad, parseInt(item.dataset.idx), -1, item.dataset.fixed==='1'); return; }
     const down = e.target.closest('.quad-down');
     if(down){ const item=down.closest('.quad-item'); quadMoveTodo(item.dataset.quad, parseInt(item.dataset.idx), 1, item.dataset.fixed==='1'); return; }
+  });
+
+  // 周计划：Tab 切换
+  document.getElementById('timeTabs').addEventListener('click',(e)=>{
+    const tab = e.target.closest('.time-tab');
+    if(!tab) return;
+    document.querySelectorAll('#timeTabs .time-tab').forEach(t=>t.classList.toggle('active', t===tab));
+    document.querySelectorAll('#pageTime .time-panel').forEach(p=>{
+      p.style.display = p.dataset.tpanel===tab.dataset.ttab ? '' : 'none';
+    });
+  });
+  // 周计划：勾选完成
+  document.addEventListener('change',(e)=>{
+    const cb = e.target.closest('.wp-check');
+    if(!cb) return;
+    const item = cb.closest('.wp-item');
+    if(!item) return;
+    const b = weekPlanBucket();
+    const t = (b[item.dataset.wp] || [])[parseInt(item.dataset.idx)];
+    if(!t) return;
+    t.done = cb.checked;
+    saveWeekPlanTodos();
+    item.classList.toggle('done', cb.checked);
+  });
+  // 周计划：新增 / 修改 / 删除
+  document.addEventListener('click',(e)=>{
+    const add = e.target.closest('.quad-add[data-wp-add]');
+    if(add){ weekPlanAdd(add.dataset.wpAdd); return; }
+    const ed = e.target.closest('.wp-edit');
+    if(ed){ const item=ed.closest('.quad-item'); weekPlanEdit(item.dataset.wp, parseInt(item.dataset.idx)); return; }
+    const del = e.target.closest('.wp-del');
+    if(del){ const item=del.closest('.quad-item'); weekPlanDel(item.dataset.wp, parseInt(item.dataset.idx)); return; }
   });
 
   // ============ 思维导图事件 ============
