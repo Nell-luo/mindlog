@@ -511,13 +511,13 @@ textarea.lined { background:#fff repeating-linear-gradient(transparent,transpare
 .wp-main { flex:1; min-width:0; }
 .wp-text { word-break:break-word; }
 .wp-note { font-size:11px; color:var(--text-light); margin-top:2px; line-height:1.5; white-space:pre-wrap; word-break:break-word; }
-.wp-item .quad-item-actions { opacity:1; }
-.wp-item .quad-item-actions button { font-size:15px; padding:0 4px; }
+.wp-item .quad-item-actions { opacity:1; gap:12px; align-items:flex-start; }
+.wp-item .quad-item-actions button { font-size:18px; padding:2px 6px; min-width:32px; min-height:30px; justify-content:center; }
 .wp-no { flex-shrink:0; width:16px; height:16px; border-radius:50%; font-size:10px; font-weight:700; display:flex; align-items:center; justify-content:center; margin-top:3px; background:var(--primary-lighter); color:var(--primary-dark); }
 .wp-no.n1 { background:#f2c98a; color:#8a5a12; }
 .wp-no.n2 { background:#b9d8cc; color:#376857; }
 .wp-no.n3 { background:#c9d6e4; color:#4a6485; }
-.wp-item .pin-check { margin-top:4px; }
+.wp-item .pin-check { margin:4px 4px 0 0; }
 .wp-item.done .wp-text { color:var(--text-light); text-decoration:line-through; }
 
 /* ============ 思维导图 ============ */
@@ -2480,12 +2480,12 @@ function renderWeekPlan(){
     if (fold[c.k]) cls += ' collapsed';
     const listHtml = items.length
       ? items.map((t,j)=>`<div class="quad-item wp-item${t.done?' done':''}" data-wp="${c.k}" data-idx="${j}">
+          <input type="checkbox" class="pin-check wp-check" title="完成"${t.done?' checked':''}>
           <span class="wp-no n${j+1}">${j+1}</span>
           <div class="wp-main">
             <div class="wp-text">${escapeHtml(t.text)}</div>
             ${t.note?'<div class="wp-note">'+escapeHtml(t.note)+'</div>':''}
           </div>
-          <input type="checkbox" class="pin-check wp-check" title="完成"${t.done?' checked':''}>
           <div class="quad-item-actions">
             <button class="wp-edit" title="编辑">✎</button>
             <button class="wp-del" title="删除">×</button>
