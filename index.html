@@ -469,12 +469,14 @@ textarea.lined { background:#fff repeating-linear-gradient(transparent,transpare
 .quad-sub { font-size:11px;color:var(--text-secondary);font-weight:600; }
 .quad-desc { font-size:11px;color:var(--text-light);line-height:1.5;margin-bottom:8px; }
 .quad-list { flex:1;display:flex;flex-direction:column;gap:4px;margin-bottom:6px; }
-.quad-item { display:flex;align-items:flex-start;gap:4px;padding:6px 8px;background:var(--kraft);border-radius:8px;font-size:13px;color:var(--text);line-height:1.4;position:relative;cursor:pointer; }
+.quad-item { display:flex;align-items:flex-start;gap:4px;padding:6px 8px;background:var(--kraft);border-radius:8px;font-size:13px;color:var(--text);line-height:1.4;position:relative;cursor:pointer;-webkit-touch-callout:none;user-select:none; }
 .quad-item:hover { background:var(--primary-lighter); }
+.quad-item.dragging { box-shadow:0 3px 10px rgba(80,100,120,.22); outline:2px solid var(--primary-light); }
 .quad-item-txt { flex:1;word-break:break-word; }
-.quad-item-actions { display:flex;gap:2px;opacity:0;transition:opacity .15s; }
+.quad-item-actions { display:flex;gap:8px;opacity:1;align-items:flex-start; }
 .quad-item:hover .quad-item-actions { opacity:1; }
-.quad-item-actions button { background:none;border:none;color:var(--text-light);cursor:pointer;font-size:13px;padding:0 2px;display:flex;align-items:center; }
+.quad-item-actions button { background:none;border:none;color:var(--text-light);cursor:pointer;font-size:16px;padding:2px 5px;min-width:26px;min-height:26px;display:flex;align-items:center;justify-content:center; }
+.quad-item-actions button:disabled { opacity:.25; }
 .quad-item-actions button:hover { color:var(--primary); }
 .quad-item.q1 { border-left:3px solid #d98076; }
 .quad-item.q2 { border-left:3px solid #7cb39b; }
@@ -505,7 +507,8 @@ textarea.lined { background:#fff repeating-linear-gradient(transparent,transpare
 .wp-card.wp-today .quad-title { color:var(--primary-dark); }
 .wp-card.wp-past { border:2px solid #b9c4cc; }
 .wp-card.wp-past .quad-title { color:var(--text-secondary); }
-.wp-item { background:transparent; border-left:none; border-radius:0; border-bottom:1px dashed var(--border-light); padding:8px 2px; }
+.wp-item { background:transparent; border-left:none; border-radius:0; border-bottom:1px dashed var(--border-light); padding:8px 2px; -webkit-touch-callout:none; user-select:none; }
+.wp-item.dragging { background:var(--primary-lighter); border-radius:8px; box-shadow:0 3px 10px rgba(80,100,120,.18); }
 .wp-item:last-child { border-bottom:none; }
 .wp-item:hover { background:transparent; }
 .wp-main { flex:1; min-width:0; }
@@ -616,7 +619,7 @@ textarea.lined { background:#fff repeating-linear-gradient(transparent,transpare
 
 /* 复盘-周复盘 */
 .review-period-card { background:linear-gradient(135deg,var(--primary-lighter),#fff);border-radius:12px;padding:12px 14px;margin-bottom:12px;border:1px solid var(--primary-light); }
-.review-period-text { font-size:14px;font-weight:600;color:var(--primary-dark);font-family:'Songti SC',serif;text-align:center; }
+.review-period-text { font-size:12px;font-weight:600;color:var(--primary-dark);font-family:'Songti SC',serif;text-align:center;white-space:nowrap;letter-spacing:-.2px; }
 .mood-weather-strip { display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-bottom:12px; }
 .mw-cell { background:var(--bg-card);border-radius:8px;padding:8px 4px;text-align:center;border:1px solid var(--border-light); }
 .mw-cell-label { font-size:10px;color:var(--text-light);margin-bottom:2px; }
@@ -5197,6 +5200,111 @@ document.addEventListener('DOMContentLoaded', ()=>{
     saveWeekPlanTodos();
     item.classList.toggle('done', cb.checked);
   });
+  // 周计划：长按拖动排序（iOS 触屏）/ 按住拖动（鼠标）
+  let wpDrag = null, wpDragPending = null, wpMousePending = null;
+  function wpDragItemFrom(ev){
+    const t = ev.target;
+    if (!t || !t.closest) return null;
+    const item = t.closest('#weekPlanGrid .wp-item, #pageTime .quad-list[data-quad] .quad-item');
+    if (!item) return null;
+    if (t.closest('button,input,.quad-item-actions')) return null;
+    return item;
+  }
+  function wpDragBegin(item){
+    wpDrag = { el:item, active:true };
+    item.classList.add('dragging');
+  }
+  function wpDragMoveTo(y){
+    if (!wpDrag || !wpDrag.active) return;
+    const el = wpDrag.el, list = el.parentElement;
+    if (!list) return;
+    const isQuad = !!list.dataset.quad;
+    const others = [...list.querySelectorAll(isQuad?'.quad-item':'.wp-item')].filter(x=>x!==el && (!isQuad || x.dataset.fixed===el.dataset.fixed));
+    let target = null;
+    for (const it of others){
+      const r = it.getBoundingClientRect();
+      if (y < r.top + r.height/2){ target = it; break; }
+    }
+    if (target){ if (el.nextElementSibling !== target) list.insertBefore(el, target); }
+    else if (isQuad){
+      if (el.dataset.fixed==='1'){
+        const boundary = list.querySelector('.quad-item[data-fixed="0"]');
+        if (boundary && el.nextElementSibling !== boundary) list.insertBefore(el, boundary);
+      } else if (list.lastElementChild !== el) list.appendChild(el);
+    }
+    else if (list.lastElementChild !== el) list.appendChild(el);
+  }
+  function wpDragEnd(){
+    if (wpDragPending){ clearTimeout(wpDragPending.timer); wpDragPending = null; }
+    wpMousePending = null;
+    if (!wpDrag) return;
+    const el = wpDrag.el;
+    wpDrag = null;
+    el.classList.remove('dragging');
+    const list = el.parentElement;
+    if (!list) return;
+    const q = list.dataset.quad;
+    if (q){
+      const els = [...list.querySelectorAll('.quad-item')];
+      [true,false].forEach(fixed=>{
+        const arr = todoSource(fixed)[q] || [];
+        const group = els.filter(x=>x.dataset.fixed===(fixed?'1':'0'));
+        if (group.length !== arr.length) return;
+        const reordered = group.map(x=>arr[parseInt(x.dataset.idx)]);
+        if (reordered.some(x=>!x)) return;
+        todoSource(fixed)[q] = reordered;
+        persistTodoSource(fixed);
+      });
+      renderQuadLists();
+      return;
+    }
+    const col = list.dataset.wp;
+    if (!col) { renderWeekPlan(); return; }
+    const b = weekPlanBucket();
+    const old = b[col] || [];
+    const reordered = [...list.querySelectorAll('.wp-item')].map(it=>old[parseInt(it.dataset.idx)]).filter(Boolean);
+    if (reordered.length === old.length){
+      b[col] = reordered;
+      saveWeekPlanTodos();
+    }
+    renderWeekPlan();
+  }
+  document.addEventListener('touchstart',(e)=>{
+    const item = wpDragItemFrom(e);
+    if (!item) return;
+    const t = e.touches[0];
+    const pending = { item, startX:t.clientX, startY:t.clientY, timer:null };
+    pending.timer = setTimeout(()=>{ if (wpDragPending === pending) wpDragBegin(item); }, 300);
+    wpDragPending = pending;
+  }, {passive:true});
+  document.addEventListener('touchmove',(e)=>{
+    if (wpDrag && wpDrag.active){ e.preventDefault(); wpDragMoveTo(e.touches[0].clientY); return; }
+    if (!wpDragPending) return;
+    const t = e.touches[0];
+    if (Math.abs(t.clientX-wpDragPending.startX)>8 || Math.abs(t.clientY-wpDragPending.startY)>8){
+      clearTimeout(wpDragPending.timer);
+      wpDragPending = null;
+    }
+  }, {passive:false});
+  document.addEventListener('touchend',()=>{ wpDragEnd(); });
+  document.addEventListener('touchcancel',()=>{ wpDragEnd(); });
+  document.addEventListener('mousedown',(e)=>{
+    if (e.button!==0) return;
+    const item = wpDragItemFrom(e);
+    if (!item) return;
+    wpMousePending = { item, startX:e.clientX, startY:e.clientY };
+  });
+  document.addEventListener('mousemove',(e)=>{
+    if (wpDrag && wpDrag.active){ wpDragMoveTo(e.clientY); return; }
+    if (!wpMousePending) return;
+    if (Math.abs(e.clientX-wpMousePending.startX)>5 || Math.abs(e.clientY-wpMousePending.startY)>5){
+      const item = wpMousePending.item;
+      wpMousePending = null;
+      wpDragBegin(item);
+      wpDragMoveTo(e.clientY);
+    }
+  });
+  document.addEventListener('mouseup',()=>{ wpDragEnd(); });
   // 周计划：新增 / 修改 / 删除
   document.addEventListener('click',(e)=>{
     const add = e.target.closest('.quad-add[data-wp-add]');
