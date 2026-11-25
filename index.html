@@ -308,7 +308,7 @@ textarea.lined { background:#fff repeating-linear-gradient(transparent,transpare
 .time-section.selftalk-section .time-section-body { padding:0;background:var(--bg-card); }
 
 /* 双模式配色：关系修复=暖色（浅橙，关怀） / 现实检验=冷色（浅蓝，检验） */
-.st-guide { font-size:12.5px;line-height:1.9;color:var(--text-secondary);background:linear-gradient(135deg,#fff8f2 0%,#f8fafc 50%,#f3f9ff 100%);border-left:3px solid #dfe6ec;border-radius:0 10px 10px 0;padding:10px 12px;margin-bottom:12px; }
+.st-guide { font-size:12.5px;line-height:1.9;color:var(--text-secondary);background:#fff;border-left:3px solid #e2e8ee;border-radius:0 10px 10px 0;padding:10px 12px;margin-bottom:12px; }
 .st-guide-title { font-weight:700;color:#4a5b6a;letter-spacing:1px;font-family:'Songti SC','STSong','SimSun',serif;margin-bottom:4px; }
 .st-guide-item { text-align:left;padding-left:0; }
 .st-guide .st-warm { color:#b06a30;font-weight:600; }
@@ -331,16 +331,18 @@ textarea.lined { background:#fff repeating-linear-gradient(transparent,transpare
 .st-circle { padding:5px 14px;border-radius:16px;background:#fff;font-size:13px;cursor:pointer;font-family:inherit;-webkit-tap-highlight-color:transparent;border:1px dashed; }
 .st-example { font-size:12px;color:var(--text-light);line-height:1.7;margin-bottom:8px; }
 .st-block textarea { min-height:64px;line-height:1.6;resize:vertical;background:#fff;border-color:var(--border-light); }
+/* 占位提示文字字号与小标题一致（13px），实际输入仍保持 16px 防 iOS 聚焦缩放 */
+.st-block textarea::placeholder { font-size:13px;line-height:1.7; }
 
 /* 关系修复（接住自己）：暖色 · 关怀模式 */
-.st-block[data-st-block="repair"] { border-color:#f3d8c2;background:#fffaf5; }
-.st-block[data-st-block="repair"] .st-block-header { background:linear-gradient(135deg,#fdf1e6,#f9e0ca);color:#a4652f; }
-.st-block[data-st-block="repair"] .st-block-header .icon { color:#d09258; }
-.st-block[data-st-block="repair"] .st-q-label { color:#a4652f; }
-.st-block[data-st-block="repair"] .st-circles-title { color:#a4652f; }
-.st-block[data-st-block="repair"] .st-circle { border-color:#e9c9ab;color:#a87249; }
-.st-block[data-st-block="repair"] .st-circle.active { border-style:solid;border-color:#cf9057;background:#fdf1e6;color:#96521f;font-weight:600;box-shadow:inset 0 0 0 2px #f3d7bb; }
-.st-block[data-st-block="repair"] textarea:focus { border-color:#e3ac7e; }
+.st-block[data-st-block="repair"] { border-color:#f7e6d8;background:#fffdfa; }
+.st-block[data-st-block="repair"] .st-block-header { background:linear-gradient(135deg,#fef8f1,#fbeade);color:#a96b3c; }
+.st-block[data-st-block="repair"] .st-block-header .icon { color:#d9a97e; }
+.st-block[data-st-block="repair"] .st-q-label { color:#a96b3c; }
+.st-block[data-st-block="repair"] .st-circles-title { color:#a96b3c; }
+.st-block[data-st-block="repair"] .st-circle { border-color:#f1dac5;color:#b58a67; }
+.st-block[data-st-block="repair"] .st-circle.active { border-style:solid;border-color:#dfa877;background:#fef7f0;color:#9e6131;font-weight:600;box-shadow:inset 0 0 0 2px #f8e3cd; }
+.st-block[data-st-block="repair"] textarea:focus { border-color:#edbf98; }
 
 /* 现实检验（拆开想法）：冷色 · 检验模式 */
 .st-block[data-st-block="reality"] { border-color:#cfe0f0;background:#f8fbff; }
@@ -6044,4 +6046,3 @@ document.addEventListener('DOMContentLoaded', ()=>{
 </script>
 
 </body></html>
-<!-- （注：内容由AI生成） -->
