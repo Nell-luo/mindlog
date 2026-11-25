@@ -314,13 +314,15 @@ textarea.lined { background:#fff repeating-linear-gradient(transparent,transpare
 .st-guide .st-warm { color:#b06a30;font-weight:600; }
 .st-guide .st-cool { color:#3f6a93;font-weight:600; }
 
-.st-block { border:1px solid var(--border-light);border-radius:12px;margin-bottom:12px;overflow:hidden;background:#fff; }
-.st-block:last-child { margin-bottom:0; }
-.st-block-header { display:flex;align-items:center;gap:8px;padding:11px 14px;cursor:pointer;user-select:none;-webkit-user-select:none;font-weight:600;font-size:14px;letter-spacing:.5px;font-family:'Songti SC','STSong','SimSun',serif; }
+/* 折叠样式对齐「复盘页 · 周复盘数据概览」的子折叠：无卡片边框，仅用细分隔线 */
+.st-block { border:none;border-bottom:1px solid var(--border-light);border-radius:0;margin-bottom:0;margin-top:0;overflow:visible;background:transparent; }
+.st-block:last-child { border-bottom:none;margin-bottom:0; }
+.st-block-header { display:flex;align-items:center;gap:8px;margin:2px -8px 0;padding:11px 10px;border-radius:8px;cursor:pointer;user-select:none;-webkit-user-select:none;background:transparent;font-weight:600;font-size:14px;letter-spacing:.5px;font-family:'Songti SC','STSong','SimSun',serif; }
+.st-block-header:active { opacity:.7; }
 .st-block-header .icon { font-size:15px; }
 .st-block-header::after { content:'▾';margin-left:auto;font-size:14px;line-height:1;opacity:.7;transition:transform .25s ease; }
 .st-block.collapsed .st-block-header::after { transform:rotate(-90deg); }
-.st-block-body { padding:12px 14px 14px;display:block; }
+.st-block-body { padding:0 2px 12px;display:block;background:transparent; }
 .st-block.collapsed .st-block-body { display:none; }
 .st-q-label { font-size:13px;font-weight:600;margin:12px 0 6px;line-height:1.5; }
 .st-q-label:first-child { margin-top:0; }
@@ -334,9 +336,9 @@ textarea.lined { background:#fff repeating-linear-gradient(transparent,transpare
 /* 占位提示文字字号与小标题一致（13px），实际输入仍保持 16px 防 iOS 聚焦缩放 */
 .st-block textarea::placeholder { font-size:13px;line-height:1.7; }
 
-/* 关系修复（接住自己）：暖色 · 关怀模式 */
-.st-block[data-st-block="repair"] { border-color:#f7e6d8;background:#fffdfa; }
-.st-block[data-st-block="repair"] .st-block-header { background:linear-gradient(135deg,#fef8f1,#fbeade);color:#a96b3c; }
+/* 关系修复（接住自己）：暖色 · 关怀模式（文字配色区分，不加大面积底色） */
+.st-block[data-st-block="repair"] { border:none;border-bottom:1px solid #f2e2d4;background:transparent; }
+.st-block[data-st-block="repair"] .st-block-header { background:#fefaf6;color:#a96b3c; }
 .st-block[data-st-block="repair"] .st-block-header .icon { color:#d9a97e; }
 .st-block[data-st-block="repair"] .st-q-label { color:#a96b3c; }
 .st-block[data-st-block="repair"] .st-circles-title { color:#a96b3c; }
@@ -344,9 +346,9 @@ textarea.lined { background:#fff repeating-linear-gradient(transparent,transpare
 .st-block[data-st-block="repair"] .st-circle.active { border-style:solid;border-color:#dfa877;background:#fef7f0;color:#9e6131;font-weight:600;box-shadow:inset 0 0 0 2px #f8e3cd; }
 .st-block[data-st-block="repair"] textarea:focus { border-color:#edbf98; }
 
-/* 现实检验（拆开想法）：冷色 · 检验模式 */
-.st-block[data-st-block="reality"] { border-color:#cfe0f0;background:#f8fbff; }
-.st-block[data-st-block="reality"] .st-block-header { background:linear-gradient(135deg,#eaf2fb,#d7e7f5);color:#39618c; }
+/* 现实检验（拆开想法）：冷色 · 检验模式（文字配色区分，不加大面积底色） */
+.st-block[data-st-block="reality"] { border:none;border-bottom:1px solid #dde9f4;background:transparent; }
+.st-block[data-st-block="reality"] .st-block-header { background:#f5fafe;color:#39618c; }
 .st-block[data-st-block="reality"] .st-block-header .icon { color:#6f9dc7; }
 .st-block[data-st-block="reality"] .st-q-label { color:#39618c; }
 .st-block[data-st-block="reality"] .st-circles-title { color:#39618c; }
