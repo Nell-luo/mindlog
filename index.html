@@ -300,6 +300,58 @@ textarea.lined { background:#fff repeating-linear-gradient(transparent,transpare
 .rs-item:hover { background:var(--primary-lighter);border-left-color:var(--primary); }
 .rs-empty { font-size:12px;color:var(--text-light);padding:6px 0; }
 
+/* 自我对话 */
+.time-section.selftalk-section { padding:18px; }
+.time-section.selftalk-section .time-section-header { background:none;color:#38495a;padding:0 0 14px;border-bottom:none;gap:8px; }
+.time-section.selftalk-section .time-section-header .icon { color:#8aa2b5;font-size:18px; }
+.time-section.selftalk-section .time-section-title { font-size:16px;font-weight:600;letter-spacing:1px;font-family:'Songti SC','STSong','SimSun',serif; }
+.time-section.selftalk-section .time-section-body { padding:0;background:var(--bg-card); }
+
+/* 双模式配色：关系修复=暖色（浅橙，关怀） / 现实检验=冷色（浅蓝，检验） */
+.st-guide { font-size:12.5px;line-height:1.9;color:var(--text-secondary);background:linear-gradient(135deg,#fff8f2 0%,#f8fafc 50%,#f3f9ff 100%);border-left:3px solid #dfe6ec;border-radius:0 10px 10px 0;padding:10px 12px;margin-bottom:12px; }
+.st-guide-title { font-weight:700;color:#4a5b6a;letter-spacing:1px;font-family:'Songti SC','STSong','SimSun',serif;margin-bottom:4px; }
+.st-guide-item { text-align:left;padding-left:0; }
+.st-guide .st-warm { color:#b06a30;font-weight:600; }
+.st-guide .st-cool { color:#3f6a93;font-weight:600; }
+
+.st-block { border:1px solid var(--border-light);border-radius:12px;margin-bottom:12px;overflow:hidden;background:#fff; }
+.st-block:last-child { margin-bottom:0; }
+.st-block-header { display:flex;align-items:center;gap:8px;padding:11px 14px;cursor:pointer;user-select:none;-webkit-user-select:none;font-weight:600;font-size:14px;letter-spacing:.5px;font-family:'Songti SC','STSong','SimSun',serif; }
+.st-block-header .icon { font-size:15px; }
+.st-block-header::after { content:'▾';margin-left:auto;font-size:14px;line-height:1;opacity:.7;transition:transform .25s ease; }
+.st-block.collapsed .st-block-header::after { transform:rotate(-90deg); }
+.st-block-body { padding:12px 14px 14px;display:block; }
+.st-block.collapsed .st-block-body { display:none; }
+.st-q-label { font-size:13px;font-weight:600;margin:12px 0 6px;line-height:1.5; }
+.st-q-label:first-child { margin-top:0; }
+.st-q-sub { font-size:12px;color:var(--text-light);font-weight:400; }
+.st-q-hint { font-size:12px;color:var(--text-light);font-weight:400;margin:-3px 0 6px;line-height:1.6; }
+.st-circles { display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0 4px; }
+.st-circles-title { font-size:13px;font-weight:600; }
+.st-circle { padding:5px 14px;border-radius:16px;background:#fff;font-size:13px;cursor:pointer;font-family:inherit;-webkit-tap-highlight-color:transparent;border:1px dashed; }
+.st-example { font-size:12px;color:var(--text-light);line-height:1.7;margin-bottom:8px; }
+.st-block textarea { min-height:64px;line-height:1.6;resize:vertical;background:#fff;border-color:var(--border-light); }
+
+/* 关系修复（接住自己）：暖色 · 关怀模式 */
+.st-block[data-st-block="repair"] { border-color:#f3d8c2;background:#fffaf5; }
+.st-block[data-st-block="repair"] .st-block-header { background:linear-gradient(135deg,#fdf1e6,#f9e0ca);color:#a4652f; }
+.st-block[data-st-block="repair"] .st-block-header .icon { color:#d09258; }
+.st-block[data-st-block="repair"] .st-q-label { color:#a4652f; }
+.st-block[data-st-block="repair"] .st-circles-title { color:#a4652f; }
+.st-block[data-st-block="repair"] .st-circle { border-color:#e9c9ab;color:#a87249; }
+.st-block[data-st-block="repair"] .st-circle.active { border-style:solid;border-color:#cf9057;background:#fdf1e6;color:#96521f;font-weight:600;box-shadow:inset 0 0 0 2px #f3d7bb; }
+.st-block[data-st-block="repair"] textarea:focus { border-color:#e3ac7e; }
+
+/* 现实检验（拆开想法）：冷色 · 检验模式 */
+.st-block[data-st-block="reality"] { border-color:#cfe0f0;background:#f8fbff; }
+.st-block[data-st-block="reality"] .st-block-header { background:linear-gradient(135deg,#eaf2fb,#d7e7f5);color:#39618c; }
+.st-block[data-st-block="reality"] .st-block-header .icon { color:#6f9dc7; }
+.st-block[data-st-block="reality"] .st-q-label { color:#39618c; }
+.st-block[data-st-block="reality"] .st-circles-title { color:#39618c; }
+.st-block[data-st-block="reality"] .st-circle { border-color:#cbdcf0;color:#587fa6; }
+.st-block[data-st-block="reality"] .st-circle.active { border-style:solid;border-color:#6f9dc7;background:#eaf2fb;color:#2f557e;font-weight:600;box-shadow:inset 0 0 0 2px #dbe9f6; }
+.st-block[data-st-block="reality"] textarea:focus { border-color:#93b8d8; }
+
 /* 保存/导出 */
 .save-btn { width:100%;padding:14px;border-radius:12px;border:none;background:linear-gradient(135deg,var(--primary) 0%,var(--primary-dark) 100%);box-shadow:0 4px 14px rgba(62,107,95,0.25);color:#fff;font-size:16px;font-weight:600;cursor:pointer;font-family:inherit;font-family:'Songti SC','STSong',serif;letter-spacing:3px;display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:14px; }
 .save-btn:active { transform:scale(.98); }
@@ -1270,6 +1322,81 @@ textarea.lined { background:#fff repeating-linear-gradient(transparent,transpare
       </div>
     </div>
 
+    <!-- 自我对话 -->
+    <div class="time-section selftalk-section">
+      <div class="time-section-header">
+        <svg class="icon"><use href="#i-chat"></use></svg>
+        <span class="time-section-title">自我对话</span>
+        <span class="growth-title-line"></span>
+      </div>
+      <div class="time-section-body">
+        <!-- 使用说明（页首） -->
+        <div class="st-guide">
+          <div class="st-guide-title">使用说明</div>
+          <div class="st-guide-item">情绪浓度高时：先写「<span class="st-warm">关系修复（接住自己）</span>」，不急着写「<span class="st-cool">现实检验</span>」。</div>
+          <div class="st-guide-item">情绪平复后：补写「<span class="st-cool">现实检验（拆开想法）</span>」。</div>
+          <div class="st-guide-item">每天至少写 1 条「<span class="st-warm">关系修复</span>」；「<span class="st-cool">现实检验</span>」可在当天或次日补。</div>
+          <div class="st-guide-item">只写一条也算完成，写"今天又攻击自己了"本身就是一次成功觉察。</div>
+        </div>
+
+        <!-- 关系修复（接住自己）：可折叠 -->
+        <div class="st-block" data-st-block="repair">
+          <div class="st-block-header"><svg class="icon"><use href="#i-chat"></use></svg>关系修复（接住自己）</div>
+          <div class="st-block-body">
+            <div class="st-q-label">① 它说了什么？<span class="st-q-sub">（原话复述，一字不改）</span></div>
+            <textarea id="stSaid" placeholder="例：你今天又拖延了，你就是个废物。"></textarea>
+            <div class="st-q-label">② 它在怕什么？<span class="st-q-sub">（背后想保护的需求）</span></div>
+            <textarea id="stFear" placeholder="怕失败？怕被否定？怕失去控制？怕被抛弃？"></textarea>
+            <div class="st-q-label">③ 如果是我最好的朋友这样，我会怎么回应他？<span class="st-q-sub">（写下对朋友说的话，然后原样送给自己）</span></div>
+            <textarea id="stFriend" placeholder="对朋友说：……"></textarea>
+            <div class="st-q-label">④ 今天我允许自己______，天没有塌。</div>
+            <textarea id="stAllow" placeholder="例：允许自己休息半小时没学习 / 允许自己发一条有错别字的消息。"></textarea>
+          </div>
+        </div>
+
+        <!-- 现实检验（拆开想法）：可折叠 -->
+        <div class="st-block" data-st-block="reality">
+          <div class="st-block-header"><svg class="icon"><use href="#i-search"></use></svg>现实检验（拆开想法）</div>
+          <div class="st-block-body">
+            <div class="st-q-label">针对的想法原话：</div>
+            <textarea id="stThought" placeholder="我这次汇报肯定搞砸了，同事一定觉得我很蠢。"></textarea>
+            <div class="st-q-label">① 这个想法现实吗？<span class="st-q-sub">（查证据）</span></div>
+            <textarea id="stEvFor" placeholder="支持它的证据：
+1.汇报中间我漏讲了一个数据，卡壳了大约五秒。
+2.讲完后我自己感觉很慌。"></textarea>
+            <textarea id="stEvAgainst" style="margin-top:8px;" placeholder="不支持它的证据：
+1.整体逻辑是清晰的，前两部分讲得很顺。
+2.会后有两个同事说&#8220;讲得不错&#8221;，还问了细节问题。
+3.领导只补充了一句&#8220;下次数据可以再全一点&#8221;，没有否定整体。
+4.&#8220;同事觉得我蠢&#8221;——没有任何人直接或间接表达过这个意思，这是我猜的。"></textarea>
+            <div class="st-circles" id="stConclusionWrap">
+              <span class="st-circles-title">结论：</span>
+              <button type="button" class="st-circle" data-value="现实">现实</button>
+              <button type="button" class="st-circle" data-value="部分现实">部分现实</button>
+              <button type="button" class="st-circle" data-value="不现实">不现实</button>
+            </div>
+            <textarea id="stConclNote" style="margin-top:8px;" placeholder="部分现实：漏数据是真的，&#8220;搞砸了&#8221;&#8220;觉得我蠢&#8221;是夸大的"></textarea>
+            <div class="st-q-label">② 这个想法是否让我自我感觉好一点？</div>
+            <div class="st-q-hint">写完这个想法后，我的情绪是变好了还是更糟了？</div>
+            <textarea id="stFeel" style="min-height:96px;" placeholder="写完&#8220;我搞砸了、同事觉得我蠢&#8221;之后，我整个人更蔫了，反复回放卡壳那五秒，晚上也没心思做别的事。情绪是变糟了，不是变好了。 这个想法让我更焦虑、更想逃避，没有让我感觉好一点。"></textarea>
+            <div class="st-q-label">③ 这个想法能否让我更好地应付现在的处境？</div>
+            <div class="st-q-hint">它让我更有行动力，还是更瘫、更逃避？</div>
+            <textarea id="stCope" style="min-height:96px;" placeholder="不能。它让我陷在&#8220;回放&#8221;里，而不是去想&#8220;漏的数据怎么补&#8221;。它让我更瘫、更想躲，而不是更有行动力。让我反复自责，没有帮我处理当下的事。"></textarea>
+            <div class="st-q-label">④ 这个想法是否有助于我下一次更好地应对？</div>
+            <div class="st-q-hint">长期看，它是在帮我成长，还是在消耗我？</div>
+            <textarea id="stNext" style="min-height:96px;" placeholder="长期看，它只会让我怕汇报、怕出错，是在消耗我。真正有用的版本是：&#8220;这次漏了一个数据，下次汇报前把数据清单单独核对一遍。&#8221;——这个才帮我下次更好应对。原想法在消耗我；修正后的版本才有帮助。"></textarea>
+            <div class="st-q-label">一句话收尾<span class="st-q-sub">（可选）</span>：这个想法我选择——</div>
+            <div class="st-circles" id="stWrapWrap">
+              <button type="button" class="st-circle" data-value="保留">保留</button>
+              <button type="button" class="st-circle" data-value="修正为">修正为</button>
+              <button type="button" class="st-circle" data-value="放下">放下</button>
+            </div>
+            <textarea id="stWrapFix" style="display:none;margin-top:8px;min-height:96px;" placeholder="修正为：这次漏了一个数据，但整体讲清楚了；下次汇报前单独核对数据清单"></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <input type="file" id="importFile" accept=".json,application/json" style="display:none;">
 
     <div class="daily-quote">
@@ -1989,6 +2116,23 @@ function renderWeekTitle(){
 }
 
 // ============ 加载日记 ============
+// 自我对话：圈选按钮（结论 / 一句话收尾）
+function setStCircle(wrapId, val){
+  const wrap = document.getElementById(wrapId);
+  if (!wrap) return;
+  wrap.querySelectorAll('.st-circle').forEach(b=>b.classList.toggle('active', b.dataset.value===val));
+  if (wrapId==='stWrapWrap'){
+    const fix = document.getElementById('stWrapFix');
+    if (fix) fix.style.display = val==='修正为' ? '' : 'none';
+  }
+}
+function getStCircle(wrapId){
+  const wrap = document.getElementById(wrapId);
+  if (!wrap) return '';
+  const b = wrap.querySelector('.st-circle.active');
+  return b ? b.dataset.value : '';
+}
+
 function loadEntry() {
   const key = dateKey(currentDate);
   const entry = entries[key];
@@ -2010,7 +2154,8 @@ function loadEntry() {
   ['focus1','focus2','focus3','qVision','qBecome','qBetter','qMood','qChild','qPeople',
    'revGood','revImprove','revStop','revStart','bookNote','newKnowledge','inspiration',
    'food','kidTime','timeWaste','tmr1','tmr2','tmr3',
-   'studyContent','studyDuration','studyNote','sportDuration','sportCal','growthContent'
+   'studyContent','studyDuration','studyNote','sportDuration','sportCal','growthContent',
+   'stSaid','stFear','stFriend','stAllow','stThought','stEvFor','stEvAgainst','stConclNote','stFeel','stCope','stNext','stWrapFix'
   ].forEach(id=>{ const el=document.getElementById(id); if(el) el.value=''; });
   document.getElementById('sportType').value = '散步';
   document.getElementById('sportNote').value = '';
@@ -2102,6 +2247,12 @@ function loadEntry() {
       document.getElementById('focus3').value = prev.tmr3||'';
     }
   }
+
+  // 自我对话：恢复/清空
+  const stIds = ['stSaid','stFear','stFriend','stAllow','stThought','stEvFor','stEvAgainst','stConclNote','stFeel','stCope','stNext','stWrapFix'];
+  stIds.forEach(id=>{ const el=document.getElementById(id); if(el) el.value = (entry && entry[id]) || ''; });
+  setStCircle('stConclusionWrap', entry ? (entry.stConclusion||'') : '');
+  setStCircle('stWrapWrap', entry ? (entry.stWrapChoice||'') : '');
 
   // 思维导图：优先取全局保存的最新一份，其次取当天日记里的镜像
   bookMindmapSaved = savedMindmaps.book || (entry && entry.bookMindmap) || null;
@@ -2251,6 +2402,21 @@ function saveEntry() {
     studyRecords: studyRecords.map(r=>({content:r.content,duration:r.duration,note:r.note,type:r.type||'专业技能',mindmap:r.mindmap||null})),
     sportRecords: [...sportRecords],
     growthRecords: [...growthRecords],
+    // 自我对话
+    stSaid: document.getElementById('stSaid').value,
+    stFear: document.getElementById('stFear').value,
+    stFriend: document.getElementById('stFriend').value,
+    stAllow: document.getElementById('stAllow').value,
+    stThought: document.getElementById('stThought').value,
+    stEvFor: document.getElementById('stEvFor').value,
+    stEvAgainst: document.getElementById('stEvAgainst').value,
+    stConclNote: document.getElementById('stConclNote').value,
+    stConclusion: getStCircle('stConclusionWrap'),
+    stFeel: document.getElementById('stFeel').value,
+    stCope: document.getElementById('stCope').value,
+    stNext: document.getElementById('stNext').value,
+    stWrapChoice: getStCircle('stWrapWrap'),
+    stWrapFix: document.getElementById('stWrapFix').value,
     todos: JSON.parse(JSON.stringify(currentTodos)),
     bookMindmap: bookMindmapSaved || savedMindmaps.book || null,
     studyMindmap: studyMindmapSaved || savedMindmaps.study || null,
@@ -2262,6 +2428,8 @@ function saveEntry() {
     e.revGood||e.revImprove||e.revStop||e.revStart||e.bookNote||e.newKnowledge||
     e.inspiration||e.food||e.kidTime||e.timeWaste||e.tmr1||e.tmr2||e.tmr3||e.tomorrow ||
     e.habits.some(h=>h) || e.studyRecords.length>0 || e.sportRecords.length>0 || e.growthRecords.length>0
+    || e.stSaid||e.stFear||e.stFriend||e.stAllow||e.stThought||e.stEvFor||e.stEvAgainst||
+    e.stConclNote||e.stFeel||e.stCope||e.stNext||e.stWrapFix||e.stConclusion||e.stWrapChoice
     || (e.todos && Object.values(e.todos).some(arr=>arr&&arr.length>0)) || e.bookMindmap || e.studyMindmap;
   if (!hasContent) { delete entries[key]; }
   localStorage.setItem('diaryEntries', JSON.stringify(entries));
@@ -3001,6 +3169,20 @@ function exportMarkdown(keys, label){
       gr.forEach((r,i)=>{ md += `${i+1}. ${r.content}${r.tags&&r.tags.length?'　'+r.tags.map(t=>'#'+t).join(' '):''}\n`; });
       md += '\n';
     }
+
+    // ---------- 💬 自我对话 ----------
+    const selftalk = [];
+    const stNb = v => String(v||'').trim().replace(/\n+/g,'\n  ');
+    const stRepair = [['① 它说了什么',e.stSaid],['② 它在怕什么',e.stFear],['③ 对朋友的回应',e.stFriend],['④ 今天允许自己',e.stAllow]]
+      .filter(([,v])=>v&&String(v).trim());
+    if(stRepair.length) selftalk.push(`**关系修复（接住自己）**\n\n${stRepair.map(([l,v])=>`- **${l}**：${stNb(v)}`).join('\n')}`);
+    const stReality = [['针对的想法原话',e.stThought],['① 支持证据',e.stEvFor],['② 不支持证据',e.stEvAgainst]]
+      .filter(([,v])=>v&&String(v).trim());
+    if(e.stConclusion) stReality.push(['结论', e.stConclusion + (e.stConclNote&&String(e.stConclNote).trim()?'：'+String(e.stConclNote).trim():'')]);
+    [['② 自我感觉',e.stFeel],['③ 应付处境',e.stCope],['④ 下次应对',e.stNext]].forEach(([l,v])=>{ if(v&&String(v).trim()) stReality.push([l,v]); });
+    if(e.stWrapChoice) stReality.push(['一句话收尾', (e.stWrapChoice==='修正为'&&e.stWrapFix&&String(e.stWrapFix).trim()) ? '修正为：'+String(e.stWrapFix).trim() : e.stWrapChoice]);
+    if(stReality.length) selftalk.push(`**现实检验（拆开想法）**\n\n${stReality.map(([l,v])=>`- **${l}**：${stNb(v)}`).join('\n')}`);
+    if(selftalk.length) md += `### 💬 自我对话\n\n${selftalk.join('\n\n')}\n\n`;
 
     md += '---\n\n';
   });
@@ -4692,7 +4874,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
     const setState = (s)=>{ try{ localStorage.setItem(storeKey, JSON.stringify(s)); }catch(e){} };
     const st = getState();
     document.querySelectorAll('.time-section').forEach(sec=>{
-      const key = sec.classList.contains('morning') ? 'morning' : sec.classList.contains('growth-section') ? 'growth' : 'evening';
+      const key = sec.classList.contains('morning') ? 'morning' : sec.classList.contains('growth-section') ? 'growth' : sec.classList.contains('selftalk-section') ? 'selftalk' : 'evening';
       if (st[key]) sec.classList.add('collapsed');
       const header = sec.querySelector('.time-section-header');
       header.addEventListener('click', ()=>{
@@ -4700,6 +4882,29 @@ document.addEventListener('DOMContentLoaded', ()=>{
         const cur = getState();
         cur[key] = sec.classList.contains('collapsed');
         setState(cur);
+      });
+    });
+  })();
+
+  // 自我对话：子卡片（关系修复 / 现实检验）折叠展开，状态本地记忆；圈选按钮交互
+  (function(){
+    const storeKey = 'xj_selftalk_collapsed';
+    const getState = ()=>{ try{ return JSON.parse(localStorage.getItem(storeKey)||'{}'); }catch(e){ return {}; } };
+    const setState = (s)=>{ try{ localStorage.setItem(storeKey, JSON.stringify(s)); }catch(e){} };
+    const st = getState();
+    document.querySelectorAll('.st-block').forEach(blk=>{
+      const key = blk.dataset.stBlock;
+      if (st[key]) blk.classList.add('collapsed');
+      blk.querySelector('.st-block-header').addEventListener('click', ()=>{
+        blk.classList.toggle('collapsed');
+        const cur = getState();
+        cur[key] = blk.classList.contains('collapsed');
+        setState(cur);
+      });
+    });
+    document.querySelectorAll('.st-circle').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        setStCircle(btn.closest('.st-circles').id, btn.dataset.value);
       });
     });
   })();
@@ -5839,3 +6044,4 @@ document.addEventListener('DOMContentLoaded', ()=>{
 </script>
 
 </body></html>
+<!-- （注：内容由AI生成） -->
